@@ -95,8 +95,1008 @@ Error generating stack: `+a.message+`
           ${d||!h?"bg-gray-400 cursor-not-allowed":"bg-[#28a745] hover:bg-[#218838] focus:ring-[#218838] cursor-pointer"}`,onClick:!d&&h?v:void 0,children:d?(M=s==null?void 0:s.checking)==null?void 0:M[l]:(U=s==null?void 0:s.lblProceed)==null?void 0:U[l]})]})},jT=({setStep:n})=>{var E,_,M,U,P,B,X;const{language:l,translations:s}=ut(),[o,u]=j.useState(""),[h,d]=j.useState(""),[m,p]=j.useState(null),[g,x]=j.useState(!1),v=o.trim()!==""&&z0(o);j.useEffect(()=>{const O=localStorage.getItem("user_email");if(O)try{const q=JSON.parse(O);d(q)}catch{d(O)}},[]);const w=async()=>{try{x(!0);const O=await qe("/api/v2/change-password-email-verify",{method:"POST",headers:{Accept:"application/json",language:l},body:{email:o}});O.status_code===200?n(9):p({message:O==null?void 0:O.message,type:"error"})}catch(O){const q=O,I=typeof q=="object"&&(q!=null&&q.message)?q.message:"Failed. Please try again later.",Q=typeof q=="object"&&typeof q.status=="number"?q.status:422;(Q===401||Q===419)&&(p({message:I,type:"error"}),setTimeout(()=>{n(1)},5e3)),p({message:I,type:"error"})}finally{x(!1)}},N={hidden:{opacity:0,y:40},visible:{opacity:1,y:0,transition:{duration:.6,ease:"easeOut"}}};return f.jsxs(ue.div,{className:"bg-white w-full p-4",variants:N,initial:"hidden",animate:"visible",children:[m&&f.jsx(Ot,{message:m.message,type:m.type,onClose:()=>p(null)}),f.jsxs("p",{className:"text-xs",children:[(E=s==null?void 0:s.lblAuthFullEmail)==null?void 0:E[l]," (",h,")"]}),f.jsx("p",{className:"text-xs my-1",children:(_=s==null?void 0:s.lblAuthFullEmail2)==null?void 0:_[l]}),f.jsxs("p",{className:"text-xs mt-4",children:[(M=s==null?void 0:s.lblInputRegEmail)==null?void 0:M[l]," "," ",f.jsxs("span",{className:"text-red-600 text-[10px]",children:["*",(U=s==null?void 0:s.lblNoCopyPaste)==null?void 0:U[l]]})]}),f.jsx("input",{type:"email",id:"phone",className:"bg-white border-gray-300 h-8 text-gray-900 font-light text-xs rounded-lg focus:ring-0 focus:border-black focus:border-[0.5px] border-[0.5px] block w-full p-2.5 my-2",placeholder:(P=s==null?void 0:s.lblInputRegEmail)==null?void 0:P[l],value:o,onChange:O=>u(O.target.value),autoComplete:"off",onCopy:O=>O.preventDefault(),onPaste:O=>O.preventDefault(),onCut:O=>O.preventDefault()}),f.jsx(ue.button,{type:"button",disabled:!v||g,whileTap:{scale:.95},whileHover:{scale:!g&&v?1.03:1},className:`text-white mb-2 h-8 rounded-lg text-xs w-full sm:w-auto px-2 py-2 text-center transition 
               ${!v||g?"bg-gray-400 cursor-not-allowed":"bg-[#28a745] hover:bg-[#218838] focus:ring-[#218838]"}`,onClick:!g&&v?w:void 0,children:g?((B=s==null?void 0:s.checking)==null?void 0:B[l])+"...":(X=s==null?void 0:s.lblProceed)==null?void 0:X[l]})]})},TT=({setStep:n})=>{var O,q,I,Q,re,fe,he,me,ie;const{language:l,translations:s}=ut(),[o,u]=j.useState(""),[h,d]=j.useState(!1),[m,p]=j.useState(""),[g,x]=j.useState(null),[v,w]=j.useState(30),[N,E]=j.useState(!0),[_,M]=j.useState(!1),U=o.trim()!==""&&o.length>=6;j.useEffect(()=>{const se=localStorage.getItem("user_email");se&&p(se)},[]);const P=async()=>{var se,F,T,D;d(!0);try{const Y=localStorage.getItem("user_phone"),J=localStorage.getItem("user_pwd"),S=await qe("/api/v2/change-password-otp",{method:"POST",headers:{Accept:"application/json",language:l},body:{mobile_no:Y,password:J,otp:o}});S.status_code===200?(localStorage.setItem("auth_name",(se=S==null?void 0:S.data)==null?void 0:se.name),localStorage.setItem("auth_email",(F=S==null?void 0:S.data)==null?void 0:F.email),localStorage.setItem("auth_phone",(T=S==null?void 0:S.data)==null?void 0:T.mobile_no),localStorage.setItem("auth_photo",(D=S==null?void 0:S.data)==null?void 0:D.profile_image),n(10)):x({message:S==null?void 0:S.message,type:"error"})}catch(Y){const J=Y,S=typeof J=="object"&&(J!=null&&J.message)?J.message:"Failed. Please try again later.",V=typeof J=="object"&&typeof J.status=="number"?J.status:422;(V===401||V===419)&&(x({message:S,type:"error"}),setTimeout(()=>{n(1)},5e3)),x({message:S,type:"error"})}finally{d(!1)}},B=async()=>{d(!0);try{const se=localStorage.getItem("user_phone"),F=await qe("/api/v2/change-password",{method:"POST",headers:{Accept:"application/json",language:l},body:{mobile_no:se}});F.status_code===200?(w(30),E(!0),M(!1)):(w(30),E(!0),M(!1),x({message:F==null?void 0:F.message,type:"error"}))}catch(se){const F=se,T=typeof F=="object"&&(F!=null&&F.message)?F.message:"Failed. Please try again later.",D=typeof F=="object"&&typeof F.status=="number"?F.status:422;(D===401||D===419)&&(x({message:T,type:"error"}),setTimeout(()=>{n(1)},5e3)),x({message:T,type:"error"})}finally{d(!1)}};j.useEffect(()=>{let se;return N&&v>0&&(se=setInterval(()=>{w(F=>F-1)},1e3)),v===0&&N&&(clearInterval(se),E(!1),M(!0)),()=>clearInterval(se)},[v,N]);const X={hidden:{opacity:0,y:40},visible:{opacity:1,y:0,transition:{duration:.6,ease:"easeOut"}}};return f.jsxs(ue.div,{className:"bg-white w-full p-4",variants:X,initial:"hidden",animate:"visible",children:[g&&f.jsx(Ot,{message:g.message,type:g.type,onClose:()=>x(null)}),f.jsxs("p",{className:"text-[10px]",children:[(O=s==null?void 0:s.lblAuthOtp1)==null?void 0:O[l]," "," "," (",m,")"]}),f.jsx("p",{className:"text-[10px]",children:(q=s==null?void 0:s.lblAuthOtp2)==null?void 0:q[l]}),f.jsxs("p",{className:"text-xs mt-4",children:[(I=s==null?void 0:s.lblInputAuthOtp)==null?void 0:I[l]," "," ",f.jsxs("span",{className:"text-red-600 text-[10px]",children:[" *",(Q=s==null?void 0:s.lblNoCopyPaste)==null?void 0:Q[l]]})]}),f.jsx("input",{type:"text",id:"otp",autoComplete:"off",className:"bg-white border-gray-300 h-8 text-gray-900 font-light text-xs rounded-lg focus:ring-0 focus:border-blue-400 focus:border-[0.1px] border-[0.5px] block w-full p-2.5 my-2",placeholder:(re=s==null?void 0:s.lblInputOtp)==null?void 0:re[l],inputMode:"numeric",value:o,maxLength:6,onCopy:se=>se.preventDefault(),onPaste:se=>se.preventDefault(),onCut:se=>se.preventDefault(),onChange:se=>{const F=se.target.value.replace(/\D/g,"");u(F)}}),f.jsx(ue.button,{type:"button",disabled:h||!U,whileTap:{scale:.95},className:`text-white mb-2 mt-2 h-8 rounded-lg text-xs w-full sm:w-auto px-2 py-2 text-center transition 
                ${h||!U?"bg-gray-400 cursor-not-allowed":"bg-[#28a745] hover:bg-[#218838] focus:ring-[#218838] cursor-pointer"}`,onClick:U?P:void 0,children:h?((fe=s==null?void 0:s.checking)==null?void 0:fe[l])+"...":(he=s==null?void 0:s.lblProceed)==null?void 0:he[l]}),f.jsx(ue.button,{onClick:B,disabled:!_,className:`text-white mb-2 mt-2 md:ml-2 h-8 rounded-lg text-xs w-full sm:w-auto px-2 py-2 text-center transition ${_?"bg-[#28a745] hover:bg-[#218838] focus:ring-[#218838] cursor-pointer":"bg-gray-400 cursor-not-allowed"}`,children:_?(me=s==null?void 0:s.resendOtp)==null?void 0:me[l]:((ie=s==null?void 0:s.resendOtp)==null?void 0:ie[l])+` ${v}s`})]})},NT=({setStep:n})=>{var _,M,U,P,B,X,O,q,I;const{language:l,translations:s}=ut(),o=pa(),[u,h]=j.useState(""),[d,m]=j.useState(!1),[p,g]=j.useState(""),[x,v]=j.useState(null),w=u.trim()!==""&&u.length>=6&&p.trim()!==""&&p.length>=6,N=async()=>{var Q,re,fe,he,me;try{if(m(!0),u!==p){v({message:"Password and confirm password do not match",type:"error"});return}const ie=await qe("/api/v2/change-password-confirm",{method:"POST",headers:{Accept:"application/json",language:l},body:{password:u,password_confirmation:p}});ie.status_code===200?(localStorage.setItem("access_token",(Q=ie==null?void 0:ie.data)==null?void 0:Q.access_token),window.dispatchEvent(new Event("tokenUpdate")),localStorage.setItem("auth_name",(re=ie==null?void 0:ie.data)==null?void 0:re.name),localStorage.setItem("auth_email",(fe=ie==null?void 0:ie.data)==null?void 0:fe.email),localStorage.setItem("auth_phone",(he=ie==null?void 0:ie.data)==null?void 0:he.mobile_no),localStorage.setItem("auth_photo",(me=ie==null?void 0:ie.data)==null?void 0:me.profile_image),localStorage.removeItem("user_pwd"),o("/application")):v({message:ie==null?void 0:ie.message,type:"error"})}catch(ie){const se=ie,F=typeof se=="object"&&(se!=null&&se.message)?se.message:"Failed. Please try again later.",T=typeof se=="object"&&typeof se.status=="number"?se.status:422;(T===401||T===419)&&(v({message:F,type:"error"}),setTimeout(()=>{n(1)},5e3)),v({message:F,type:"error"})}finally{m(!1)}},E={hidden:{opacity:0,y:40},visible:{opacity:1,y:0,transition:{duration:.6,ease:"easeOut"}}};return f.jsxs(ue.div,{className:"bg-white w-full p-4",variants:E,initial:"hidden",animate:"visible",children:[x&&f.jsx(Ot,{message:x.message,type:x.type,onClose:()=>v(null)}),f.jsxs("p",{className:"text-xs mt-4",children:[(_=s==null?void 0:s.lblInputPassword)==null?void 0:_[l]," "," ",f.jsx("span",{className:"text-red-600 text-[10px]",children:(M=s==null?void 0:s.lblNoCopyPaste)==null?void 0:M[l]})]}),f.jsx("input",{type:"password",id:"password",autoComplete:"off",onCopy:Q=>Q.preventDefault(),onPaste:Q=>Q.preventDefault(),onCut:Q=>Q.preventDefault(),className:"bg-white border-gray-300 h-8 text-gray-900 font-light text-xs rounded-lg focus:ring-0 focus:border-blue-400 focus:border-[0.1px] border-[0.5px] block w-full p-2.5 my-2",placeholder:(U=s==null?void 0:s.lblInputPassword)==null?void 0:U[l],value:u,onChange:Q=>h(Q.target.value)}),u.length>0&&u.length<6&&f.jsx("p",{className:"text-red-500 text-[11px] mb-2",children:(P=s==null?void 0:s.passwordMinLengthMsg)==null?void 0:P[l]}),f.jsxs("p",{className:"text-xs mt-4",children:[(B=s==null?void 0:s.lblInputRePassword)==null?void 0:B[l]," "," ",f.jsx("span",{className:"text-red-600 text-[10px]",children:(X=s==null?void 0:s.lblNoCopyPaste)==null?void 0:X[l]})]}),f.jsx("input",{type:"password",id:"password_confirm",onCopy:Q=>Q.preventDefault(),onPaste:Q=>Q.preventDefault(),onCut:Q=>Q.preventDefault(),autoComplete:"off",className:"bg-white border-gray-300 h-8 text-gray-900 font-light text-xs rounded-lg focus:ring-0 focus:border-blue-400 focus:border-[0.1px] border-[0.5px] block w-full p-2.5 my-2",placeholder:(O=s==null?void 0:s.lblInputRePassword)==null?void 0:O[l],value:p,onChange:Q=>g(Q.target.value)}),f.jsx(ue.button,{type:"button",disabled:!w,whileTap:{scale:.95},className:`text-white mb-2 mt-2 h-8 rounded-lg text-xs w-full sm:w-auto px-2 py-2 text-center transition 
-         ${d||!w?"bg-gray-400 cursor-not-allowed":"bg-[#28a745] hover:bg-[#218838] focus:ring-[#218838] cursor-pointer"}`,onClick:!d&&w?N:void 0,children:d?((q=s==null?void 0:s.checking)==null?void 0:q[l])+"...":(I=s==null?void 0:s.lblProceed)==null?void 0:I[l]})]})},J0=j.createContext(void 0),AT=({children:n})=>{const[l,s]=j.useState(null),[o,u]=j.useState(!0),[h,d]=j.useState(null),m="initialData",p=E=>{try{localStorage.setItem(m,JSON.stringify(E))}catch(_){console.error("Failed to save to localStorage:",_)}},g=async()=>{try{const E=localStorage.getItem(m);return E?localStorage.getItem("access_token")?JSON.parse(E):await x():null}catch(E){return console.error("Failed to read from localStorage:",E),null}},x=async()=>{try{const E=await fetch("/home.json");if(!E.ok)throw new Error(`Failed to fetch: ${E.status}`);return await E.json()}catch(E){return console.error("Error fetching initial data:",E),null}},v=async()=>{var E,_;try{u(!0);const M={"status":"success","status_code":200,"message":"Slot available","data":{"slot_available":true,"ivac_fees":"1500"},"meta":[]};M.status_code===200?N((E=M==null?void 0:M.data)==null?void 0:E.slot_available,(_=M==null?void 0:M.data)==null?void 0:_.ivac_fees):M.status_code===401?(localStorage.clear(),window.location.href="/"):N(!1)}catch(M){M.status===401?(localStorage.clear(),window.location.href="/"):N(!1)}finally{u(!1)}},w=async()=>{u(!0),d(null);try{const E=await x();E||(localStorage.clear(),window.location.href="/"),s(E),p(E)}catch(E){localStorage.clear(),window.location.href="/",d(E instanceof Error?E.message:"Unknown error")}finally{u(!1)}},N=(E,_=0)=>{l?(s(M=>({...M,slot_available:E,visa_fee:_})),p({...l,slot_available:E,visa_fee:_})):x().then(M=>{M&&(s(U=>({...U,slot_available:E,visa_fee:_})),p({...M,slot_available:E,visa_fee:_}))})};return j.useEffect(()=>{var _;const E=g();E&&((_=Object==null?void 0:Object.keys(E))==null?void 0:_.length)>2?(s(E),u(!1)):w()},[]),j.useEffect(()=>{localStorage.getItem("access_token")&&v()},[localStorage.getItem("access_token")]),f.jsx(J0.Provider,{value:{initialData:l,isLoading:o,error:h,refreshData:w,updateSlotAvailableAndFees:N},children:n})},Bf=()=>{const n=j.useContext(J0);if(n===void 0)throw new Error("useInitialData must be used within an InitialDataProvider");return n},ET=({setStep:n})=>{var I,Q,re,fe,he,me,ie,se,F,T;const{updateSlotAvailableAndFees:l}=Bf(),{language:s,translations:o}=ut(),u=pa(),[h,d]=j.useState(""),[m,p]=j.useState(!1),[g,x]=j.useState(""),v=h.trim()!==""&&h.length>=6,[w,N]=j.useState(null),[E,_]=j.useState(30),[M,U]=j.useState(!0),[P,B]=j.useState(!1),X={hidden:{opacity:0,y:40},visible:{opacity:1,y:0,transition:{duration:.6,ease:"easeOut"}}};j.useEffect(()=>{const D=localStorage.getItem("user_email");D&&x(D)},[]);const O=async()=>{var D,Y,J,S,V,te;try{p(!0);const W=localStorage.getItem("user_phone"),le=localStorage.getItem("user_pwd"),ee=await qe("/api/v2/login-otp",{method:"POST",headers:{Accept:"application/json",language:s},body:{mobile_no:W,password:le,otp:h}});ee.status_code===200?(localStorage.setItem("access_token",(D=ee==null?void 0:ee.data)==null?void 0:D.access_token),l((Y=ee.data)==null?void 0:Y.slot_available),window.dispatchEvent(new Event("tokenUpdate")),localStorage.setItem("auth_name",(J=ee==null?void 0:ee.data)==null?void 0:J.name),localStorage.setItem("auth_email",(S=ee==null?void 0:ee.data)==null?void 0:S.email),localStorage.setItem("auth_phone",(V=ee==null?void 0:ee.data)==null?void 0:V.mobile_no),localStorage.setItem("auth_photo",(te=ee==null?void 0:ee.data)==null?void 0:te.profile_image),localStorage.removeItem("user_pwd"),u("/application")):N({message:ee==null?void 0:ee.message,type:"error"})}catch(W){const le=W,ee=typeof le=="object"&&(le!=null&&le.message)?le.message:"Failed. Please try again later.",ae=typeof le=="object"&&typeof le.status=="number"?le.status:422;(ae===401||ae===419)&&(N({message:ee,type:"error"}),setTimeout(()=>{n(1)},5e3)),N({message:ee,type:"error"})}finally{p(!1)}},q=async()=>{p(!0);try{const D=localStorage.getItem("user_phone"),Y=localStorage.getItem("user_pwd"),J=await qe("/api/v2/login",{method:"POST",headers:{Accept:"application/json",language:s},body:{mobile_no:D,password:Y}});J.status_code===200?(_(30),U(!0),B(!1)):(_(30),U(!0),B(!1),N({message:J==null?void 0:J.message,type:"error"}))}catch(D){const Y=D,J=typeof Y=="object"&&(Y!=null&&Y.message)?Y.message:"Failed. Please try again later.",S=typeof Y=="object"&&typeof Y.status=="number"?Y.status:422;(S===401||S===419)&&(N({message:J,type:"error"}),setTimeout(()=>{n(1)},5e3)),N({message:J,type:"error"})}finally{p(!1)}};return j.useEffect(()=>{let D;return M&&E>0&&(D=setInterval(()=>{_(Y=>Y-1)},1e3)),E===0&&M&&(clearInterval(D),U(!1),B(!0)),()=>clearInterval(D)},[E,M]),f.jsxs(ue.div,{className:"bg-white w-full p-4",variants:X,initial:"hidden",animate:"visible",children:[w&&f.jsx(Ot,{message:w.message,type:w.type,onClose:()=>N(null)}),f.jsxs("p",{className:"text-[10px]",children:[(I=o==null?void 0:o.lblAuthOtp1)==null?void 0:I[s]," (",g,")"]}),f.jsx("p",{className:"text-[10px]",children:(Q=o==null?void 0:o.lblAuthOtp2)==null?void 0:Q[s]}),f.jsxs("p",{className:"text-xs mt-4",children:[(re=o==null?void 0:o.lblInputAuthOtp)==null?void 0:re[s]," ",f.jsxs("span",{className:"text-red-600 text-[10px]",children:[" ","*",(fe=o==null?void 0:o.lblNoCopyPaste)==null?void 0:fe[s]]})]}),f.jsx("input",{type:"text",id:"otp",autoComplete:"off",className:"bg-white border-gray-300 h-8 text-gray-900 font-light text-xs rounded-sm focus:ring-0 focus:border-slate-400 duration-300 border-[1.5px] focus:outline-0 block w-full p-2.5 my-2",placeholder:(he=o==null?void 0:o.lblInputOtp)==null?void 0:he[s],inputMode:"numeric",value:h,maxLength:6,onCopy:D=>D.preventDefault(),onPaste:D=>D.preventDefault(),onCut:D=>D.preventDefault(),onChange:D=>{const Y=D.target.value.replace(/\D/g,"");d(Y)}}),f.jsxs("div",{children:[f.jsx(ue.button,{type:"button",whileTap:{scale:.95},className:"text-white mb-2 mt-2 mr-2 h-8 rounded-lg text-xs w-full sm:w-auto px-2 py-2 text-center transition bg-gray-400 hover:bg-[#218838] focus:ring-[#218838] cursor-pointer",onClick:()=>n(1),children:(me=o==null?void 0:o.back)==null?void 0:me[s]}),f.jsx(ue.button,{type:"button",disabled:m||!v,whileTap:{scale:.95},className:`text-white mb-2 mt-2 h-8 rounded-lg text-xs w-full sm:w-auto px-2 py-2 text-center transition 
-               ${m||!v?"bg-gray-400 cursor-not-allowed":"bg-[#28a745] hover:bg-[#218838] focus:ring-[#218838] cursor-pointer"}`,onClick:v?O:void 0,children:m?((ie=o==null?void 0:o.checking)==null?void 0:ie[s])+"...":(se=o==null?void 0:o.lblProceed)==null?void 0:se[s]}),f.jsx(ue.button,{onClick:q,disabled:!P,className:`text-white mb-2 mt-2 md:ml-2 h-8 rounded-lg text-xs w-full sm:w-auto px-2 py-2 text-center transition ${P?"bg-[#28a745] hover:bg-[#218838] focus:ring-[#218838] cursor-pointer":"bg-gray-400 cursor-not-allowed"}`,children:P?(F=o==null?void 0:o.resendOtp)==null?void 0:F[s]:((T=o==null?void 0:o.resendOtp)==null?void 0:T[s])+` ${E}s`})]})]})},ha=n=>{localStorage.clear(),window.dispatchEvent(new Event("tokenUpdate")),n("/")},CT=({setActiveStep:n})=>{var et,sn,Va,Ta,kt,Ua,ga,za,Ba,Ft,ct,be,Je,ya,La,on,xa,ea,Rt;const[l,s]=j.useState(!1),{initialData:o,error:u,isLoading:h}=Bf(),{language:d,translations:m}=ut(),p=pa(),[g,x]=j.useState(!1),[v,w]=j.useState(null),[N,E]=j.useState([]),[_,M]=j.useState(""),[U,P]=j.useState(""),[B,X]=j.useState(""),[O,q]=j.useState(!1),[I,Q]=j.useState([]),[re,fe]=j.useState([]),[he,me]=j.useState(""),[ie,se]=j.useState(""),[F,T]=j.useState(0),[D,Y]=j.useState([]),[J,S]=j.useState(""),[V,te]=j.useState(""),[W,le]=j.useState(""),[ee,ae]=j.useState(!1),[de,ne]=j.useState(""),[Ve,Oe]=j.useState(!1),Re="0x4AAAAAABvQ3Mi6RktCuZ7P";j.useEffect(()=>{const oe=localStorage.getItem("applicant");if(oe)try{const ye=JSON.parse(oe);M(ye.highcom||null),P(ye.webfile_id||null),X(ye.webfile_id_repeat||null),te(ye.family_count||null),le(ye.visit_purpose||null),S(ye.visa_type||null),me(ye.ivac_name||null),se(ye.ivac_id||null)}catch{console.error("Failed to parse applicant data from localStorage.")}},[]),j.useEffect(()=>{o&&!h&&!u?(T(o.visa_fee||null),Oe(o==null?void 0:o.slot_available),E(o==null?void 0:o.centers),Q(o==null?void 0:o.ivacs),fe(o==null?void 0:o.ivacs),Y(o==null?void 0:o.visa_types)):u&&w({message:u,type:"error"})},[h,u,JSON.stringify(o)]);const De=async()=>{try{ae(!0);const oe=localStorage.getItem("access_token"),ye={"status":"success","status_code":200,"message":"This webfile has no payment.","data":[],"meta":[]};ye.status_code===200?q(!0):(q(!1),w({message:ye==null?void 0:ye.message,type:"error"}))}catch(oe){const ye=oe,Qe=typeof ye=="object"&&(ye!=null&&ye.message)?ye.message:"Failed to get payment data. Please try again later.",$e=typeof ye=="object"&&typeof ye.status=="number"?ye.status:422;($e===401||$e===419)&&(w({message:"Unauthorized, session timed out",type:"error"}),setTimeout(()=>{ha(p)},5e3)),w({message:Qe,type:"error"})}finally{ae(!1)}};j.useEffect(()=>{U.length===12&&B.length===12&&(U===B?De():w({message:"Web File ID does not match",type:"error"}))},[U,B]);const lt=oe=>{const ye=oe.target.value;M(ye);const Qe=I.filter($=>($==null?void 0:$.center_info_id)==ye);fe(Qe),me("");const $e=localStorage.getItem("applicant");if($e){const $=JSON.parse($e);"ivac_id"in $&&delete $.ivac_id,"ivac_name"in $&&delete $.ivac_name,localStorage.setItem("applicant",JSON.stringify($))}},Ne=async oe=>{try{ae(!0);const[ye,Qe]=oe.target.value.split("|");me(ye),se(Qe)}catch(ye){const Qe=ye,$e=typeof Qe=="object"&&(Qe!=null&&Qe.message)?Qe.message:"Failed to get payment data. Please try again later.",$=typeof Qe=="object"&&typeof Qe.status=="number"?Qe.status:422;($===401||$===419)&&(w({message:"Unauthorized, session timed out",type:"error"}),setTimeout(()=>{ha(p)},5e3)),w({message:$e,type:"error"})}finally{ae(!1)}},Ie=_.trim()!==""&&U.trim()!==""&&U.length>=12&&B.trim()!==""&&B.length>=12&&O&&he.trim()!==""&&F!==0&&J.trim()!==""&&V.trim()!==""&&W.trim()!==""&&W.length>=15&&de.trim()!==""&&l,vt=async()=>{try{const oe=localStorage.getItem("access_token");x(!0);const Qe=localStorage.getItem("is_edit")==="true"?"/api/v2/payment/application-info-edit":"/api/v2/payment/application-r5s7h3-submit-hyju6t",$e=await qe(Qe,{method:"POST",headers:{Accept:"application/json",language:d,Authorization:`Bearer ${oe}`},body:{highcom:_,webfile_id:U,webfile_id_repeat:B,ivac_id:ie,visa_type:J,family_count:V,visit_purpose:W,y6e7uk_token_t6d8n3:de}});if($e.status_code===200){n(2);const $={highcom:_,webfile_id:U,webfile_id_repeat:B,ivac_id:ie,ivac_name:he,visa_type:J,family_count:V,visit_purpose:W};localStorage.setItem("applicant",JSON.stringify($))}else w({message:$e==null?void 0:$e.message,type:"error"});x(!1)}catch(oe){x(!1);const ye=oe,Qe=typeof ye=="object"&&(ye!=null&&ye.message)?ye.message:"Failed to get payment data. Please try again later.",$e=typeof ye=="object"&&typeof ye.status=="number"?ye.status:422;($e===401||$e===419)&&(w({message:"Unauthorized, session timed out",type:"error"}),setTimeout(()=>{ha(p)},5e3)),w({message:Qe,type:"error"})}};return j.useEffect(()=>{const oe=setTimeout(()=>{s(!0)},4e4);return()=>clearTimeout(oe)},[]),ee?f.jsx(U0,{}):f.jsxs("div",{className:"grid grid-cols-1 gap-x-6 gap-y-2",children:[v&&f.jsx(Ot,{message:v.message,type:v.type,onClose:()=>w(null)}),Ve?f.jsxs(f.Fragment,{children:[f.jsxs("div",{className:"sm:col-span-3",children:[f.jsx("label",{htmlFor:"high-commission",className:"block text-xs font-light text-black uppercase",children:(sn=m==null?void 0:m.lblSelectHighCommission)==null?void 0:sn[d]}),f.jsx("div",{className:"mt-2",children:f.jsxs("select",{id:"center",name:"center",value:_,onChange:lt,className:"block w-full rounded-md px-3 py-1.5 text-base font-light text-black outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-1 sm:text-sm/6",children:[f.jsx("option",{value:"",disabled:!0,hidden:!0,className:"text-gray-500 font-light",children:(Va=m==null?void 0:m.lblSelectHighCommission)==null?void 0:Va[d]}),N.map(oe=>f.jsx("option",{value:oe.id,className:"text-black font-light",children:oe==null?void 0:oe.c_name},oe.id))]})})]}),f.jsxs("div",{className:"sm:col-span-3",children:[f.jsxs("label",{htmlFor:"first-name",className:"block text-xs font-light text-black uppercase",children:[(Ta=m==null?void 0:m.lblInputWebFile)==null?void 0:Ta[d]," ",f.jsxs("span",{className:"text-red-600 text-[10px]",children:["(",(kt=m==null?void 0:m.lblMustFace7)==null?void 0:kt[d],")"]})]}),f.jsx("div",{className:"mt-2",children:f.jsx("input",{type:"text",name:"webfile_id",id:"webfile_id",onCopy:oe=>oe.preventDefault(),onPaste:oe=>oe.preventDefault(),onCut:oe=>oe.preventDefault(),maxLength:12,autoComplete:"off",value:U,onChange:oe=>{P(oe.target.value),q(!1)},className:"block w-full rounded-md bg-white px-3 py-1.5 text-base text-black outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 sm:text-sm/6"})})]}),f.jsxs("div",{className:"sm:col-span-3",children:[f.jsxs("label",{htmlFor:"first-name",className:"block text-xs font-light text-black uppercase",children:[(Ua=m==null?void 0:m.lblInputWebFileAgain)==null?void 0:Ua[d]," ",f.jsxs("span",{className:"text-red-600 text-[10px]",children:["*(",(ga=m==null?void 0:m.lblNoCopyPaste)==null?void 0:ga[d],")"]})]}),f.jsx("div",{className:"mt-2",children:f.jsx("input",{type:"text",name:"first-name",id:"first-name",onCopy:oe=>oe.preventDefault(),onPaste:oe=>oe.preventDefault(),onCut:oe=>oe.preventDefault(),maxLength:12,autoComplete:"off",value:B,onChange:oe=>{X(oe.target.value),q(!1)},className:"block w-full rounded-md bg-white px-3 py-1.5 text-base text-black outline-1 outline-gray-300 placeholder:text-gray-400 focus:outline-1 focus:-outline-offset-1 sm:text-sm/6"})})]}),f.jsxs("div",{className:"sm:col-span-3",onClick:()=>{O||w({message:"Please enter a valid Web File ID before selecting a center.",type:"error"})},children:[f.jsx("label",{htmlFor:"first-name",className:"block text-xs font-light text-black uppercase",children:(za=m==null?void 0:m.lblInputSelectIvac)==null?void 0:za[d]}),f.jsx("div",{className:"mt-2",children:f.jsxs("select",{id:"center",name:"center",disabled:!O,value:he&&ie?`${he}|${ie}`:"",onChange:Ne,className:"block w-full rounded-md px-3 py-1.5 text-base font-light text-black outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400  sm:text-sm/6",children:[f.jsx("option",{value:"",disabled:!0,hidden:!0,children:(Ba=m==null?void 0:m.lblInputSelectIvac)==null?void 0:Ba[d]}),re.map(oe=>f.jsx("option",{value:`${oe.app_key}|${oe.id}`,children:oe.ivac_name},oe.id))]})})]}),f.jsxs("div",{className:"sm:col-span-3",children:[f.jsxs("label",{htmlFor:"first-name",className:"block text-xs font-light text-black uppercase",children:[(Ft=m==null?void 0:m.lblInputVisaType)==null?void 0:Ft[d]," ",f.jsxs("span",{className:"text-red-600 text-[10px]",children:["*(",(ct=m==null?void 0:m.lblVisaTypeQueue)==null?void 0:ct[d],")"]})]}),f.jsx("div",{className:"mt-2",children:f.jsxs("select",{id:"visa_type",name:"visa_type",disabled:!O,value:J??"",onChange:oe=>S(oe.target.value),className:"block w-full rounded-md px-3 py-1.5 text-base font-light text-black outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 sm:text-sm/6",children:[f.jsx("option",{value:"",disabled:!0,hidden:!0,children:(be=m==null?void 0:m.lblInputVisaTypePlaceholder)==null?void 0:be[d]}),D.map(oe=>f.jsx("option",{value:oe.id,children:oe.type_name},oe.id))]})})]}),f.jsxs("div",{className:"sm:col-span-3",children:[f.jsx("label",{htmlFor:"first-name",className:"block text-xs font-light text-black uppercase",children:(Je=m==null?void 0:m.lblInputNumberOfFamily)==null?void 0:Je[d]}),f.jsx("div",{className:"mt-2",children:f.jsxs("select",{id:"family_count",name:"family_count",disabled:!O,value:V??"",onChange:oe=>te(oe.target.value),className:"block w-full rounded-md px-3 py-1.5 text-base font-light text-black outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 sm:text-sm/6",children:[f.jsx("option",{value:"",disabled:!0,hidden:!0,children:(ya=m==null?void 0:m.lblInputNoOfAppPlaceholder)==null?void 0:ya[d]}),f.jsx("option",{value:"0",children:"0"}),f.jsx("option",{value:"1",children:"1"}),f.jsx("option",{value:"2",children:"2"}),f.jsx("option",{value:"3",children:"3"}),f.jsx("option",{value:"4",children:"4"})]})})]}),f.jsxs("div",{className:"sm:col-span-3",children:[f.jsxs("label",{htmlFor:"first-name",className:"block text-xs font-light text-black uppercase",children:[(La=m==null?void 0:m.lblInputVisitPurpose)==null?void 0:La[d]," ",f.jsxs("span",{className:"text-red-600 uppercase text-[10px]",children:["*(",(on=m==null?void 0:m.noCopyPasteMinChar)==null?void 0:on[d],")"]})]}),f.jsx("div",{className:"mt-2",children:f.jsx("textarea",{name:"visit_purpose",id:"visit_purpose",onCopy:oe=>oe.preventDefault(),onPaste:oe=>oe.preventDefault(),onCut:oe=>oe.preventDefault(),autoComplete:"off",disabled:!O,value:W,onChange:oe=>le(oe.target.value),className:"block w-full rounded-md bg-white px-3 py-1.5 text-base text-black outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 sm:text-sm/6"})})]}),f.jsxs("div",{className:"sm:col-span-3",children:[f.jsx("label",{htmlFor:"first-name",className:"block text-xs font-light text-black uppercase",children:(xa=m==null?void 0:m.lblInputAmount)==null?void 0:xa[d]}),f.jsxs("label",{htmlFor:"first-name",className:"block text-sm font-bold text-black uppercase",children:["BDT ",F!==0?F:""]})]}),f.jsx("div",{className:"sm:col-span-3",children:f.jsx(nr,{sitekey:Re,onVerify:oe=>ne(oe)})}),f.jsx("div",{className:"sm:col-span-3",children:g?f.jsxs(ue.button,{type:"button",whileTap:{scale:.95},className:`text-white mb-2 mt-2 h-8 rounded-lg text-xs w-full sm:w-auto px-2 py-2 text-center transition duration-300
+         ${d||!w?"bg-gray-400 cursor-not-allowed":"bg-[#28a745] hover:bg-[#218838] focus:ring-[#218838] cursor-pointer"}`,onClick:!d&&w?N:void 0,children:d?((q=s==null?void 0:s.checking)==null?void 0:q[l])+"...":(I=s==null?void 0:s.lblProceed)==null?void 0:I[l]})]})},J0=j.createContext(void 0),AT=({children:n})=>{const[l,s]=j.useState(null),[o,u]=j.useState(!0),[h,d]=j.useState(null),m="initialData",p=E=>{try{localStorage.setItem(m,JSON.stringify(E))}catch(_){console.error("Failed to save to localStorage:",_)}},g=async()=>{try{const E=localStorage.getItem(m);return E?localStorage.getItem("access_token")?JSON.parse(E):await x():null}catch(E){return console.error("Failed to read from localStorage:",E),null}},x=async()=>{try{const E={
+  "slot_available": false,
+  "centers": [
+    {
+      "id": 1,
+      "c_name": "Dhaka",
+      "prefix": "D"
+    },
+    {
+      "id": 2,
+      "c_name": "Chittagong",
+      "prefix": "C"
+    },
+    {
+      "id": 3,
+      "c_name": "Rajshahi",
+      "prefix": "R"
+    },
+    {
+      "id": 4,
+      "c_name": "Sylhet",
+      "prefix": "S"
+    },
+    {
+      "id": 5,
+      "c_name": "Khulna",
+      "prefix": "K"
+    }
+  ],
+  "ivacs": [
+    {
+      "id": 2,
+      "center_info_id": 3,
+      "ivac_name": "IVAC , RAJSHAHI",
+      "prefix": "R",
+      "app_key": "IVACRAJSHAHI",
+      "visa_fee": "1500.00",
+      "new_fees_applied_from": "2018-08-05 00:00:00",
+      "notify_fees_from": "2018-07-29 04:54:32",
+      "max_notification_count": 2,
+      "allow_old_amount_until_new_date": 2
+    },
+    {
+      "id": 3,
+      "center_info_id": 5,
+      "ivac_name": "IVAC, KHULNA",
+      "prefix": "K",
+      "app_key": "IVACKHULNA",
+      "visa_fee": "1500.00",
+      "new_fees_applied_from": "2018-08-05 00:00:00",
+      "notify_fees_from": "2018-07-29 04:54:32",
+      "max_notification_count": 2,
+      "allow_old_amount_until_new_date": 2
+    },
+    {
+      "id": 4,
+      "center_info_id": 4,
+      "ivac_name": "IVAC, SYLHET",
+      "prefix": "S",
+      "app_key": "IVACSYLHET",
+      "visa_fee": "1500.00",
+      "new_fees_applied_from": "2018-08-05 00:00:00",
+      "notify_fees_from": "2018-07-29 04:54:32",
+      "max_notification_count": 2,
+      "allow_old_amount_until_new_date": 2
+    },
+    {
+      "id": 5,
+      "center_info_id": 2,
+      "ivac_name": "IVAC, CHITTAGONG",
+      "prefix": "C",
+      "app_key": "IVACCHITTAGONG",
+      "visa_fee": "1500.00",
+      "new_fees_applied_from": "2018-08-05 00:00:00",
+      "notify_fees_from": "2018-07-29 04:54:32",
+      "max_notification_count": 2,
+      "allow_old_amount_until_new_date": 2
+    },
+    {
+      "id": 7,
+      "center_info_id": 3,
+      "ivac_name": "IVAC, RANGPUR",
+      "prefix": "R",
+      "app_key": "IVACRANGPUR",
+      "visa_fee": "1500.00",
+      "new_fees_applied_from": "2018-08-05 00:00:00",
+      "notify_fees_from": "2018-07-29 04:54:32",
+      "max_notification_count": 2,
+      "allow_old_amount_until_new_date": 2
+    },
+    {
+      "id": 8,
+      "center_info_id": 4,
+      "ivac_name": "IVAC, MYMENSINGH",
+      "prefix": "S",
+      "app_key": "IVACMYMENSINGH",
+      "visa_fee": "1500.00",
+      "new_fees_applied_from": "2018-08-05 00:00:00",
+      "notify_fees_from": "2018-07-29 04:54:32",
+      "max_notification_count": 2,
+      "allow_old_amount_until_new_date": 2
+    },
+    {
+      "id": 9,
+      "center_info_id": 1,
+      "ivac_name": "IVAC, BARISAL",
+      "prefix": "D",
+      "app_key": "IVACBARISAL",
+      "visa_fee": "1500.00",
+      "new_fees_applied_from": "2018-08-05 00:00:00",
+      "notify_fees_from": "2018-07-29 04:54:32",
+      "max_notification_count": 2,
+      "allow_old_amount_until_new_date": 2
+    },
+    {
+      "id": 12,
+      "center_info_id": 1,
+      "ivac_name": "IVAC, JESSORE",
+      "prefix": "D",
+      "app_key": "IVACJESSORE",
+      "visa_fee": "1500.00",
+      "new_fees_applied_from": "2018-08-05 00:00:00",
+      "notify_fees_from": "2018-07-29 04:54:32",
+      "max_notification_count": 2,
+      "allow_old_amount_until_new_date": 2
+    },
+    {
+      "id": 17,
+      "center_info_id": 1,
+      "ivac_name": "IVAC, Dhaka (JFP)",
+      "prefix": "D",
+      "app_key": "IVACJFP",
+      "visa_fee": "1500.00",
+      "new_fees_applied_from": "2018-08-05 00:00:00",
+      "notify_fees_from": "2018-07-29 04:54:32",
+      "max_notification_count": 2,
+      "allow_old_amount_until_new_date": 2
+    },
+    {
+      "id": 18,
+      "center_info_id": 3,
+      "ivac_name": "IVAC, THAKURGAON",
+      "prefix": "R",
+      "app_key": "IVACTHAKURGAON",
+      "visa_fee": "1500.00",
+      "new_fees_applied_from": "2018-08-05 00:00:00",
+      "notify_fees_from": "2018-07-29 04:54:32",
+      "max_notification_count": 2,
+      "allow_old_amount_until_new_date": 2
+    },
+    {
+      "id": 19,
+      "center_info_id": 3,
+      "ivac_name": "IVAC, BOGURA",
+      "prefix": "R",
+      "app_key": "IVACBOGURA",
+      "visa_fee": "1500.00",
+      "new_fees_applied_from": "2018-08-05 00:00:00",
+      "notify_fees_from": "2018-07-29 04:54:32",
+      "max_notification_count": 2,
+      "allow_old_amount_until_new_date": 2
+    },
+    {
+      "id": 20,
+      "center_info_id": 1,
+      "ivac_name": "IVAC, SATKHIRA",
+      "prefix": "D",
+      "app_key": "IVACSATKHIRA",
+      "visa_fee": "1500.00",
+      "new_fees_applied_from": "2018-08-05 00:00:00",
+      "notify_fees_from": "2018-07-29 04:54:32",
+      "max_notification_count": 2,
+      "allow_old_amount_until_new_date": 2
+    },
+    {
+      "id": 21,
+      "center_info_id": 2,
+      "ivac_name": "IVAC, CUMILLA",
+      "prefix": "C",
+      "app_key": "IVACCUMILLA",
+      "visa_fee": "1500.00",
+      "new_fees_applied_from": "2018-08-05 00:00:00",
+      "notify_fees_from": "2018-07-29 04:54:32",
+      "max_notification_count": 2,
+      "allow_old_amount_until_new_date": 2
+    },
+    {
+      "id": 22,
+      "center_info_id": 2,
+      "ivac_name": "IVAC, NOAKHALI",
+      "prefix": "C",
+      "app_key": "IVACNOAKHALI",
+      "visa_fee": "1500.00",
+      "new_fees_applied_from": "2018-08-05 00:00:00",
+      "notify_fees_from": "2018-07-29 04:54:32",
+      "max_notification_count": 2,
+      "allow_old_amount_until_new_date": 2
+    },
+    {
+      "id": 23,
+      "center_info_id": 2,
+      "ivac_name": "IVAC, BRAHMANBARIA",
+      "prefix": "C",
+      "app_key": "IVACBRAHMANBARIA",
+      "visa_fee": "1500.00",
+      "new_fees_applied_from": "2018-08-05 00:00:00",
+      "notify_fees_from": "2018-07-29 04:54:32",
+      "max_notification_count": 2,
+      "allow_old_amount_until_new_date": 2
+    },
+    {
+      "id": 24,
+      "center_info_id": 3,
+      "ivac_name": "IVAC, KUSHTIA",
+      "prefix": "R",
+      "app_key": "IVACKUSHTIA",
+      "visa_fee": "1500.00",
+      "new_fees_applied_from": "2023-04-16 13:58:24",
+      "notify_fees_from": "2023-04-16 13:58:24",
+      "max_notification_count": 2,
+      "allow_old_amount_until_new_date": 2
+    }
+  ],
+  "visa_types": [
+    {
+      "id": 3,
+      "type_name": "TOURIST VISA"
+    },
+    {
+      "id": 13,
+      "type_name": "MEDICAL/MEDICAL ATTENDANT VISA"
+    },
+    {
+      "id": 1,
+      "type_name": "BUSINESS VISA"
+    },
+    {
+      "id": 6,
+      "type_name": "ENTRY VISA"
+    },
+    {
+      "id": 19,
+      "type_name": "DOUBLE ENTRY VISA"
+    },
+    {
+      "id": 2,
+      "type_name": "STUDENT VISA"
+    },
+    {
+      "id": 18,
+      "type_name": "OTHERS VISA"
+    }
+  ],
+  "notice": [
+    {
+      "bn": "আমরা বর্তমানে সীমিত পরিসরে আমাদের ভিসা কার্যক্রম পরিচালনা করছি। আজ ভিসার জন্য অ্যাপয়েন্টমেন্ট সম্পূর্ণ হয়েছে। পরবর্তী অ্যাপয়েন্টমেন্ট স্লটগুলি পরবর্তী কর্মদিবসে সন্ধ্যা ৬:০০ টায় মেডিকেল, এন্ট্রি ভিসা, ব্যবসায়িক এবং ছাত্র বিভাগের অ্যাপয়েন্টমেন্টের জন্য উপলব্ধ থাকবে। দয়া করে মনে রাখবেন যে এই চারটি বিভাগ ব্যতীত, অন্যান্য ভিসা বিভাগের স্লটগুলি বর্তমানে খোলা নেই।",
+      "en": "WE ARE CURRENTLY RUNNING OUR VISA OPERATIONS ON A LIMITED SCALE. THE APPOINTMENTS FOR VISAS ARE CURRENTLY FULL TODAY. NEXT APPOINTMENT SLOTS WILL BE AVAILABLE ON THE NEXT WORKING DAY AT 06:00 PM FOR MEDICAL, ENTRY VISA, BUSINESS AND STUDENT CATEGORY APPOINTMENTS. KINDLY NOTE THAT EXCEPT FOR THESE FOUR CATEGORIES, SLOTS IN OTHER VISA CATEGORIES ARE NOT OPEN AT THE MOMENT.",
+      "is_warning": 2
+    },
+    {
+      "bn": "অনুগ্রহ করে নিশ্চিত করুন যে অনলাইন আবেদনপত্রে প্রদত্ত আবেদনকারীর মোবাইল নম্বর দিয়ে ওটিপি যাচাইকরণ করা হয়েছে।",
+      "en": "PLEASE ENSURE OTP VERIFICATION IS DONE WITH THE APPLICANT MOBILE NUMBER AS PROVIDED IN THE ONLINE APPLICATION FORM.",
+      "is_warning": 0
+    },
+    {
+      "bn": "আবেদনকারীদের অপ্রয়োজনীয় সারি এড়াতে এবং আবেদন দ্রুত জমা দেয়ার জন্য শুধুমাত্র বরাদ্দকৃত স্লটের সময়ে IVAC-এ উপস্থিত হওয়ার জন্য অনুরোধ করা হচ্ছে",
+      "en": "APPLICANTS ARE REQUESTED TO REACH IVAC ONLY DURING THE SLOTS TIMINGS ALLOTTED TO AVOID UNNECESSARY QUEUES AND QUICK PROCESSING",
+      "is_warning": 1
+    },
+    {
+      "bn": "বর্তমান ঠিকানা IVAC কেন্দ্রের অবস্থানের ঠিকানার সাথে না মিললে আবেদনকারী তার ভিসা জমা দিতে পারবেন না",
+      "en": "THE APPLICANT CANNOT SUBMIT HIS OR HER VISA IF THE PRESENT ADDRESS DOES NOT MATCH THE ADDRESS OF THE IVAC CENTER LOCATION",
+      "is_warning": 1
+    },
+    {
+      "bn": "আপনার আবেদনের জন্য নির্বাচিত হাইকমিশন নির্বাচন করুন।",
+      "en": "PLEASE CHOOSE A HIGH COMMISSION OF YOUR APPLICATION",
+      "is_warning": 0
+    },
+    {
+      "bn": "আপনার আবেদনের ওয়েব ফাইল নাম্বার দিন (২বার)।",
+      "en": "PUT WEB FILE NUMBER OF YOUR APPLICATION (2 TIMES)",
+      "is_warning": 0
+    },
+    {
+      "bn": "এরপর আপনার আবেদনের জন্য নির্ধারিত আইভ্যাক নির্বাচন করুন।",
+      "en": "THEN CHOOSE AN IVAC FOR YOUR APPLICATION",
+      "is_warning": 0
+    },
+    {
+      "bn": "আপনার ভিসা আবেদনের টাইপ নির্বাচন করুন।",
+      "en": "CHOOSE VISA TYPE OF YOUR APPLICATION",
+      "is_warning": 0
+    },
+    {
+      "bn": "আপনার ব্যক্তিগত তথ্য দিন (যেমনঃ নাম, নাম্বার, ইমেইল আইডি)",
+      "en": "PROVIDE YOUR PERSONAL INFORMATION (Eg. NAME, CONTACT NUMBER, EMAIL)",
+      "is_warning": 0
+    },
+    {
+      "bn": "আপনার পেমেন্ট ইনভোয়েস পেতে ইমেইল ঠিকানা নিশ্চিত করুন",
+      "en": "PLEASE CONFIRM YOUR EMAIL ADDRESS TO GET PAYMENT INVOICE",
+      "is_warning": 1
+    },
+    {
+      "bn": "পেমেন্ট করে নতুন অ্যাপয়েন্টমেন্টের তারিখে পাসপোর্ট এর মেয়াদ সর্বনিম্ন ৬ মাস থাকতে হবে",
+      "en": "PASSPORT VALIDITY SHOULD BE AT LEAST 6 MONTHS ON THE DATE OF APPOINTMENT AND NOT ON THE DATE OF PAYMENT AND APPOINTMENT BOOKING.",
+      "is_warning": 1
+    }
+  ],
+  "languages": {
+    "lblInsTitle": {
+      "en": "INSTRUCTIONS",
+      "bn": "নির্দেশনা"
+    },
+    "video_guide": {
+      "en": "Watch our user guide",
+      "bn": "আমাদের ইউজার গাইড দেখুন"
+    },
+    "having_check": {
+      "en": "Having Problems? Check the",
+      "bn": "সমস্যা হচ্ছে? পড়ুন আমাদের"
+    },
+    "user_manual": {
+      "en": "User Manual",
+      "bn": "ব্যবহার বিধি"
+    },
+    "and": {
+      "en": "and",
+      "bn": "এবং"
+    },
+    "faq": {
+      "en": "FAQ",
+      "bn": "বহুল জিজ্ঞাসিত প্রশ্নসমূহ"
+    },
+    "lblIns1": {
+      "en": "PUT WEB FILE NUMBER OF YOUR APPLICATION (2 TIMES)",
+      "bn": "আপনার আবেদনের ওয়েব ফাইল নাম্বার দিন (২বার)।"
+    },
+    "lblIns2": {
+      "en": "PLEASE CHOOSE A HIGH COMMISSION OF YOUR APPLICATION",
+      "bn": "আপনার আবেদনের জন্য নির্বাচিত হাইকমিশন নির্বাচন করুন।"
+    },
+    "lblIns3": {
+      "en": "THEN CHOOSE AN IVAC FOR YOUR APPLICATION",
+      "bn": "এরপর আপনার আবেদনের জন্য নির্ধারিত আইভ্যাক নির্বাচন করুন।"
+    },
+    "lblIns4": {
+      "en": "CHOOSE VISA TYPE OF YOUR APPLICATION",
+      "bn": "আপনার ভিসা আবেদনের টাইপ নির্বাচন করুন।"
+    },
+    "lblIns5": {
+      "en": "PROVIDE YOUR PERSONAL INFORMATION (Eg. NAME, CONTACT NUMBER, EMAIL)",
+      "bn": "আপনার ব্যক্তিগত তথ্য দিন (যেমনঃ নাম, নাম্বার, ইমেইল আইডি)"
+    },
+    "lblSpecialIns": {
+      "en": "PLEASE CONFIRM YOUR EMAIL ADDRESS TO GET PAYMENT INVOICE",
+      "bn": "আপনার পেমেন্ট ইনভোয়েস পেতে ইমেইল ঠিকানা নিশ্চিত করুন"
+    },
+    "lblOne": {
+      "en": "1",
+      "bn": "১"
+    },
+    "lblTwo": {
+      "en": "2",
+      "bn": "২"
+    },
+    "lblThree": {
+      "en": "3",
+      "bn": "৩"
+    },
+    "lblFour": {
+      "en": "4",
+      "bn": "৪"
+    },
+    "lblTabMenuAuth": {
+      "en": "Authentication",
+      "bn": "লগইন"
+    },
+    "lblTabMenuRegister": {
+      "en": "Registration",
+      "bn": "রেজিস্ট্রেশন"
+    },
+    "lblProceed": {
+      "en": "Proceed",
+      "bn": "পরবর্তী ধাপ"
+    },
+    "lblSubmit": {
+      "en": "Submit",
+      "bn": "সাবমিট"
+    },
+    "lblInputForgotPassword": {
+      "en": "Forgot Password",
+      "bn": "পাসওয়ার্ড ভুলে গেছেন"
+    },
+    "lblInputPassword": {
+      "en": "ENTER PASSWORD",
+      "bn": "আপনার পাসওয়ার্ড দিন"
+    },
+    "lblInputNewPassword": {
+      "en": "ENTER NEW PASSWORD",
+      "bn": "নতুন পাসওয়ার্ড লিখুন"
+    },
+    "lblInputRePassword": {
+      "en": "CONFIRM PASSWORD",
+      "bn": "পাসওয়ার্ড নিশ্চিত করুন"
+    },
+    "lblInputLoginMobile": {
+      "en": "ENTER YOUR MOBILE NUMBER",
+      "bn": "আপনার মোবাইল নাম্বার দিন"
+    },
+    "lblInputLoginMobilePassChange": {
+      "en": "ENTER MOBILE NUMBER TO CHANGE PASSWORD",
+      "bn": "পাসওয়ার্ড পরিবর্তন করতে মোবাইল নম্বর লিখুন"
+    },
+    "lblInputLoginMobileMsg": {
+      "en": "PLEASE ENSURE SAME MOBILE NUMBER HERE AS PROVIDED IN THE ONLINE APPLICATION FORM",
+      "bn": "অনুগ্রহ করে অনলাইন আবেদন ফর্মে দেওয়া মোবাইল নম্বরটি এখানে হুবহু লিখুন"
+    },
+    "lblInputRegMobile": {
+      "en": "YOUR MOBILE NUMBER",
+      "bn": "আপনার মোবাইল নাম্বার"
+    },
+    "lblInputRegPhotoUpload": {
+      "en": "UPLOAD YOUR PHOTO",
+      "bn": "আপনার ছবি আপলোড করুন"
+    },
+    "lblInputRegPhotoSize": {
+      "en": "MAX PHOTO SIZE 2MB, FORMAT: JPG, PNG, JPEG",
+      "bn": "সর্বোচ্চ ছবি সাইজ ২MB, ফরম্যাট: JPG, PNG, JPEG।"
+    },
+    "lblInputAuthOtp": {
+      "en": "CONFIRM OTP",
+      "bn": "ওটিপি নিশ্চিত করুন"
+    },
+    "lblInputOtp": {
+      "en": "ENTER OTP",
+      "bn": "ওটিপি দিন"
+    },
+    "lblInputSentOtp": {
+      "en": "SEND OTP",
+      "bn": "ওটিপি পাঠান"
+    },
+    "lblAuthOtp1": {
+      "en": "We've sent a 6 digit code to",
+      "bn": "আমরা ৬ সংখ্যার একটি কোড পাঠিয়েছি"
+    },
+    "lblAuthFullEmail": {
+      "en": "Your email is not varified",
+      "bn": "আপনার ইমেল যাচাই করা হয় নি"
+    },
+    "lblAuthFullEmail2": {
+      "en": "Enter it or new email to sent OTP",
+      "bn": "ওটিপি পাঠাতে এটি অথবা নতুন ইমেল লিখুন"
+    },
+    "lblAuthOtp2": {
+      "en": "Enter it bellow to verify your account",
+      "bn": "আপনার অ্যাকাউন্ট যাচাই করতে নিচে এটি লিখুন"
+    },
+    "lblTabMenu1": {
+      "en": "Application Info",
+      "bn": "আবেদনের তথ্য"
+    },
+    "lblTabMenu2": {
+      "en": "Personal Info",
+      "bn": "ব্যক্তিগত তথ্য"
+    },
+    "lblTabMenu3": {
+      "en": "Overview",
+      "bn": "ওভারভিউ"
+    },
+    "lblTabMenu4": {
+      "en": "Payment",
+      "bn": "পেমেন্ট"
+    },
+    "lblSelectHighCommission": {
+      "en": "Select a mission",
+      "bn": "আপনার আবেদনের মিশন নির্বাচন করুন"
+    },
+    "lblInputWebFile": {
+      "en": "ENTER YOUR WEB FILE NUMBER",
+      "bn": "আপনার ওয়েব ফাইল নাম্বার দিন"
+    },
+    "lblInputWebFileAgain": {
+      "en": "ENTER YOUR WEB FILE NUMBER ONCE AGAIN",
+      "bn": "পুনরায় আপনার ওয়েব ফাইল নাম্বার দিন"
+    },
+    "lblInputVisitPurpose": {
+      "en": "VISIT PURPOSE DETAILS",
+      "bn": "ভ্রমণের উদ্দেশ্য বিবরণ"
+    },
+    "lblInputFamily": {
+      "en": "FAMILY MEMBER",
+      "bn": "পরিবারের সদস্য"
+    },
+    "lblInputFamilyWebFile": {
+      "en": "ENTER WEB FILE NUMBER",
+      "bn": "ওয়েব ফাইল নাম্বার দিন"
+    },
+    "lblInputFamilyWebFileAgain": {
+      "en": "ENTER WEB FILE NUMBER ONCE AGAIN",
+      "bn": "পুনরায় ওয়েব ফাইল নাম্বার দিন"
+    },
+    "lblInputSelectIvac": {
+      "en": "SELECT YOUR IVAC CENTER",
+      "bn": "আপনার আবেদনের আইভ্যাক সেন্টার দিন"
+    },
+    "lblInputVisaType": {
+      "en": "VISA TYPE",
+      "bn": "ভিসার ধরন"
+    },
+    "lblInputNumberOfFamily": {
+      "en": "NUMBER OF FAMILY MEMBERS / CO-APPLICANT",
+      "bn": "পরিবারের সদস্য সংখ্যা / সহ-আবেদনকারী"
+    },
+    "lblInputPassportNo": {
+      "en": "PASSPORT NUMBER",
+      "bn": "পাসপোর্ট নাম্বার"
+    },
+    "lblInputAmount": {
+      "en": "AMOUNT",
+      "bn": "টাকার পরিমান"
+    },
+    "lblNoCopyPaste": {
+      "en": "NO COPY PASTE ALLOWED",
+      "bn": "কপি/পেস্ট করতে পারবেন না"
+    },
+    "lblSaveNext": {
+      "en": "Save and Next",
+      "bn": "সংরক্ষণ করুন ও পরবর্তী ধাপে যান"
+    },
+    "lblInputName": {
+      "en": "YOUR FULL NAME",
+      "bn": "আপনার পুরো নাম"
+    },
+    "lblInputFullName": {
+      "en": "FULL NAME",
+      "bn": "পুরো নাম"
+    },
+    "lblInputRegName": {
+      "en": "ENTER YOUR FULL NAME",
+      "bn": "আপনার পুরো নাম দিন"
+    },
+    "lblInputEmail": {
+      "en": "YOUR EMAIL ADDRESS",
+      "bn": "আপনার ইমেইল ঠিকানা"
+    },
+    "lblInputRegEmail": {
+      "en": "ENTER EMAIL ADDRESS",
+      "bn": "ইমেইল ঠিকানা দিন"
+    },
+    "lblInputContactNo": {
+      "en": "YOUR CONTACT NUMBER",
+      "bn": "আপনাকে যোগাযোগের নাম্বার"
+    },
+    "lblInputAppointmentType": {
+      "en": "APPOINTMENT TYPE",
+      "bn": "সাক্ষাতের ধরন"
+    },
+    "lblInputAppointment": {
+      "en": "SELECT AN APPOINTMENT DATE",
+      "bn": "সাক্ষাতের সময় নির্বাচন করুন"
+    },
+    "lblSaveOverview": {
+      "en": "Save and show overview",
+      "bn": "সংরক্ষণ করুন ও সব ঠিক আছে কি না দেখুন"
+    },
+    "lblRequired": {
+      "en": "Mandatory",
+      "bn": "আবশ্যক"
+    },
+    "ovWebID": {
+      "en": "WEB FILE NUMBER",
+      "bn": "ওয়েব ফাইল নাম্বার"
+    },
+    "ovIvacCenter": {
+      "en": "IVAC CENTER",
+      "bn": "আইভ্যাক সেন্টার"
+    },
+    "ovVisaType": {
+      "en": "VISA TYPE",
+      "bn": "ভিসা টাইপ"
+    },
+    "ovPassport": {
+      "en": "PASSPORT NUMBER",
+      "bn": "পাসপোর্ট নাম্বার"
+    },
+    "ovFees": {
+      "en": "FEES",
+      "bn": "ফিস"
+    },
+    "ovName": {
+      "en": "NAME",
+      "bn": "নাম"
+    },
+    "ovEmail": {
+      "en": "EMAIL",
+      "bn": "ইমেইল"
+    },
+    "ovContact": {
+      "en": "CONTACT NUMBER",
+      "bn": "যোগাযোগ নাম্বার"
+    },
+    "ovAppointment": {
+      "en": "APPOINTMENT DATE",
+      "bn": "সাক্ষাতের তারিখ"
+    },
+    "tcAgree": {
+      "en": "I agree to the",
+      "bn": "আমি সম্মত আছি"
+    },
+    "tcText": {
+      "en": "Terms of Service",
+      "bn": "এই সেবার নিয়মাবলী"
+    },
+    "conMovePay": {
+      "en": "Confirm and move for payment",
+      "bn": "ঠিক আছে, পেমেন্ট এ নিয়ে যান"
+    },
+    "orYouCan": {
+      "en": "OR YOU CAN",
+      "bn": "অথবা আপনি"
+    },
+    "EditInfo": {
+      "en": "EDIT YOUR INFORMATION",
+      "bn": "এডিট করতে পারেন"
+    },
+    "payCard": {
+      "en": "Cards",
+      "bn": "কার্ড"
+    },
+    "payInt": {
+      "en": "INTERNET",
+      "bn": "ইন্টারনেট"
+    },
+    "payMob": {
+      "en": "MOBILES",
+      "bn": "মোবাইল"
+    },
+    "payOth": {
+      "en": "OTHERS",
+      "bn": "অন্যান্য"
+    },
+    "paySelectOption": {
+      "en": "Please choose a payment option from left side",
+      "bn": "পেমেন্ট করার জন্য একটি অপশন পছন্দ করুন"
+    },
+    "payConvFee": {
+      "en": "Convenience Fees",
+      "bn": "সুবিধা ফিস"
+    },
+    "payPayable": {
+      "en": "Payable Amount",
+      "bn": "পেমেন্ট এমাউন্ট"
+    },
+    "payNow": {
+      "en": "Pay Now",
+      "bn": "পেমেন্ট করুন"
+    },
+    "QueryPay": {
+      "en": "Check payment status",
+      "bn": "পেমেন্টের অবস্থা দেখুন"
+    },
+    "bckToPay": {
+      "en": "Back to payment",
+      "bn": "পেমেন্ট পেজ এ নিয়ে যান"
+    },
+    "lblQueryStatus": {
+      "en": "Query your payment status",
+      "bn": "আপনার পেমেন্ট এর বর্তমান অবস্থা জানুন"
+    },
+    "btnQueryStatus": {
+      "en": "Check Payment",
+      "bn": "পেমেন্ট অবস্থা জানুন"
+    },
+    "ovPayStatus": {
+      "en": "PAYMENT STATUS",
+      "bn": "পেমেন্ট এর বর্তমান অবস্থা"
+    },
+    "ovCheckedStatus": {
+      "en": "CHECKED STATUS",
+      "bn": "যাচাই অবস্থা"
+    },
+    "ovPaid": {
+      "en": "PAID",
+      "bn": "জমা হয়েছে"
+    },
+    "ovUnPaid": {
+      "en": "UNPAID",
+      "bn": "জমা হয়নি"
+    },
+    "ovChecked": {
+      "en": "CHECKED",
+      "bn": "যাচাই হয়েছে"
+    },
+    "ovUnChecked": {
+      "en": "UNCHECKED",
+      "bn": "যাচাই হয়নি"
+    },
+    "ovProbableAppointment": {
+      "en": "Probable date of visit",
+      "bn": "আইভ্যাক এ আসার সম্ভাব্য তারিখ"
+    },
+    "lblProbableAppointment": {
+      "en": "Choose a probable date of visit",
+      "bn": "আইভ্যাক এ আসার সম্ভাব্য তারিখ পছন্দ করুন"
+    },
+    "lblMustFace7": {
+      "en": "YOUR VISA APPLICATION IS VALID FOR 15 CALENDER DAYS. PLEASE SUBMIT WITHIN VALIDITY",
+      "bn": "আপনার ভিসা এপ্লিকেশন এর মেয়াদ ১৫ দিন, এই সময়ের মধ্যে এপ্লিকেশন জমা দিন।"
+    },
+    "lblFailTrx": {
+      "en": "Sorry, your transaction was not successful. For any query please contact with our support center at ivac@sslwireless.com by email.",
+      "bn": "দুঃখিত, আপনার ট্রানজেকশনটি সম্পন্ন হয়নি, যেকোন জিজ্ঞাসা এর জন্য আমাদের সাপোর্ট সেন্টার এর ইমেইল ivac@sslwireless.com এ যোগাযোগ করুন"
+    },
+    "lblFailTrx2": {
+      "en": "You can try with another payment method or check our user manual and faq for more details.",
+      "bn": "আপনি অন্যান্য পেমেন্ট চ্যানেল ব্যবহার করে চেস্টা করতে পারেন অথবা আমাদের ইউজার ম্যানুয়াল এবং এফ.এ.কিউ পড়ে বিস্তারিত জানুন।"
+    },
+    "lblSuccessText1": {
+      "en": "Thank you for your payment. We have received your payment of BDT",
+      "bn": "পেমেন্ট করার জন্য আপনাকে ধন্যবাদ, আমরা আপনার পরিশোধিত টাকাঃ"
+    },
+    "lblSuccessText2": {
+      "en": "successfully. Your transaction ID is",
+      "bn": "সফল ভাবে পেয়েছি, আপনার ট্রানজেকশন আইডি হলঃ"
+    },
+    "lblSuccessText3": {
+      "en": "You will get an sms notification and email invoice soon!",
+      "bn": "আপনি খুব শীঘ্রই একটি এস.এম.এস ও ইমেইল পাবেন!"
+    },
+    "btnDownPDF": {
+      "en": "Download PDF of Invoice",
+      "bn": "ইনভোয়েস পিডিএফ ডাউনলোড"
+    },
+    "btnPrintPDF": {
+      "en": "Print Invoice",
+      "bn": "প্রিন্ট করুন"
+    },
+    "btnStartOver": {
+      "en": "Make another payment",
+      "bn": "নতুন করে পেমেন্ট"
+    },
+    "btnRetryTransaction": {
+      "en": "Try another payment channel",
+      "bn": "অন্যান্য পেমেন্ট চ্যানেলে চেস্টা করুন"
+    },
+    "confirmApplicationRemoval": {
+      "en": "Are you sure to remove this application?",
+      "bn": "এপ্লিকেশনটি মুছে ফেলতে আপনি কি নিশ্চিত?"
+    },
+    "AddMoreApplication": {
+      "en": "Add more application",
+      "bn": "আরো এপ্লিকেশন যুক্ত করুন"
+    },
+    "btnExpandOrClose": {
+      "en": "Click here to expand or close",
+      "bn": "বিস্তারিত জানতে বা সংক্ষিপ্ত করতে ক্লিক করুন"
+    },
+    "AddMoreApplicationFamily": {
+      "en": "Add more for family number",
+      "bn": "পরিবারের জন্য আরো এপ্লিকেশন যুক্ত করুন"
+    },
+    "lblInputAppointDate": {
+      "en": "Appointment Date",
+      "bn": "সাক্ষাৎকারের তারিখ "
+    },
+    "lblInputAppointTime": {
+      "en": "Appointment Time",
+      "bn": "সাক্ষাৎকারের সময়"
+    },
+    "msgTrans5min": {
+      "en": "Please complete your transaction within 5 minutes to get the appointment date successfully",
+      "bn": "অ্যাপয়েন্টমেন্টের তারিখ সফলভাবে পেতে অনুগ্রহ করে 5 মিনিটের মধ্যে আপনার লেনদেন সম্পূর্ণ করুন"
+    },
+    "msgSameFamilyMember": {
+      "en": "(Applicable only for same family members who are attending in a same IVAC and VISA type)",
+      "bn": "(শুধুমাত্র একই পরিবারের সদস্যদের জন্য প্রযোজ্য যারা একই IVAC এবং VISA প্রকারে অংশগ্রহণ করছেন)"
+    },
+    "lblSpecialInsForQueue": {
+      "en": "APPLICANTS ARE REQUESTED TO REACH IVAC ONLY DURING THE SLOTS TIMINGS ALLOTTED TO AVOID UNNECESSARY QUEUES AND QUICK PROCESSING",
+      "bn": "আবেদনকারীদের অপ্রয়োজনীয় সারি এড়াতে এবং আবেদন দ্রুত জমা দেয়ার জন্য শুধুমাত্র  বরাদ্দকৃত স্লটের সময়ে  IVAC-এ উপস্থিত হওয়ার জন্য অনুরোধ করা হচ্ছে"
+    },
+    "lblVisaTypeQueue": {
+      "en": "PLEASE SELECT VISA TYPE SAME AS APPLICATION OR THE APPOINTMENT WILL BE TREATED AS CANCELLED",
+      "bn": "অনুগ্রহ করে আবেদনের মতোই ভিসার ধরন নির্বাচন করুন বা অ্যাপয়েন্টমেন্ট বাতিল বলে গণ্য হবে"
+    },
+    "lblPaymentSuccessQueue": {
+      "en": "Please download this invoice and carry printout copy of this invoice to IVAC",
+      "bn": "অনুগ্রহ করে এই চালানটি ডাউনলোড করুন এবং এই চালানের প্রিন্টআউটটি IVAC-তে নিয়ে যান"
+    },
+    "insPopupMsg1": {
+      "en": "All family members should take the appointment on the same date. To add family members using \"Add More for Family Number\" option in Step 3. (* Maximum 5 people)",
+      "bn": "পরিবারের সকল সদস্যদের একই তারিখে এপয়েন্টমেন্ট নিতে হবে।  স্টেপ ৩ এর  \"অ্যাড মোর ফর ফ্যামিলি নম্বর \" এর সাহায্যে পরিবারের সদস্যদের যুক্ত করুন।  (* সর্বোচ ৫ জন )"
+    },
+    "insPopupMsg2": {
+      "en": "If accompanying the medical visa applicant, the appointment of medical attendant  should be made on the same date. To add associates using \"Add More for Family Number\" in Step 3. \n(* Maximum 5 people)",
+      "bn": "মেডিক্যাল ভিসা আবেদনকারীর সাথে সহযোগী থাকলে একই তারিখ এ এপয়েন্টমেন্ট নিতে হবে। স্টেপ ৩ এর  \"অ্যাড মোর ফর ফ্যামিলি নম্বর \" এর সাহায্যে সহযোগী যুক্ত করুন।(* সর্বোচ ৫ জন )"
+    },
+    "insPopupMsg3": {
+      "en": "Applicants under 18 years of age must make an appointment with a parent on the same date. Applicants under 18 years of age will be rejected if they have made an appointment prior to the appointment of the guardian. To add associates using \"Add More for Family Number\" in Step 3. (* Maximum 5 people)",
+      "bn": "১৮ বছর এর নিচে আবেদনকারীরা অভিভাবক এর সাথে একই তারিখে এপয়েন্টমেন্ট নিতে হবে। ১৮ বছর এর নিচে আবেদনকারীরা অভিভাবক এর এপয়েন্টমেন্ট এর পূর্ব এপয়েন্টমেন্ট নিয়ে থাকলে আবেদনপত্র বাতিল হবে। স্টেপ ৩ এর  \"অ্যাড মোর ফর ফ্যামিলি নম্বর \" এর সাহায্যে সহযোগী যুক্ত করুন।  (* সর্বোচ ৫ জন )"
+    },
+    "insPopupMsgTitle": {
+      "en": "Instruction",
+      "bn": "নির্দেশনা"
+    },
+    "msgVerifyOtp": {
+      "en": "You need to verify OTP first to get appointment date time",
+      "bn": "অ্যাপয়েন্টমেন্টের তারিখের সময় পেতে আপনাকে প্রথমে ওটিপি যাচাই করতে হবে"
+    },
+    "msgVerifyCaptcha": {
+      "en": "Please complete the CAPTCHA to sent OTP",
+      "bn": "ওটিপি পাঠানোর পূর্বে ক্যাপচা সম্পূর্ণ করুন।"
+    },
+    "msgSuccessVerify": {
+      "en": "OTP successfully verified",
+      "bn": "OTP সফলভাবে যাচাই করা হয়েছে"
+    },
+    "payPhone": {
+      "en": "Mobile No",
+      "bn": "মোবাইল নাম্বার"
+    },
+    "verified": {
+      "en": "Verified",
+      "bn": "যাচাইকৃত”"
+    },
+    "lblSpecialInsNew01": {
+      "en": "PASSPORT VALIDITY SHOULD BE AT LEAST 6 MONTHS ON THE DATE OF APPOINTMENT AND NOT ON THE DATE OF PAYMENT AND APPOINTMENT BOOKING.",
+      "bn": "পেমেন্ট করে নতুন অ্যাপয়েন্টমেন্টের তারিখে পাসপোর্ট এর মেয়াদ সর্বনিম্ন ৬ মাস থাকতে হবে"
+    },
+    "lblSpecialInsForAddress": {
+      "en": "THE APPLICANT CANNOT SUBMIT HIS OR HER VISA IF THE PRESENT ADDRESS DOES NOT MATCH THE ADDRESS OF THE IVAC CENTER LOCATION",
+      "bn": "বর্তমান ঠিকানা IVAC কেন্দ্রের অবস্থানের ঠিকানার সাথে না মিললে আবেদনকারী তার ভিসা জমা দিতে পারবেন না"
+    },
+    "lblSpecialInsForRamjan": {
+      "en": "DURING THE HOLY MONTH OF RAMADAN, FROM 12TH MARCH 2024,  IVAC JFP WILL ACCEPT VISA APPLICATIONS ONLY TILL 3.30PM . THOSE WITH APPOINTMENT SLOTS BETWEEN 3 TO 4PM ARE REQUESTED TO REACH IVAC JFP BEFORE 3.30PM.",
+      "bn": "পবিত্র রমজান মাসে, ১২ই মার্চ ২০২৪ থেকে আইভ্যাক যমুনা ফিউচার পার্ক সেন্টার এ শুধুমাত্র বিকাল ৩:৩০ পর্যন্ত ভিসার আবেদন গ্রহণ করবে। ৩ টা থেকে ৪ টার মধ্যে যাদের অ্যাপয়েন্টমেন্ট স্লট রয়েছে তাদের বিকাল ৩:৩০ এর আগে আইভ্যাক যমুনা ফিউচার পার্ক সেন্টার এ পৌঁছানোর জন্য অনুরোধ করা হচ্ছে।"
+    },
+    "lblSpecialInsForSlot": {
+      "en": "WE ARE CURRENTLY RUNNING OUR VISA OPERATIONS ON A LIMITED SCALE. THE APPOINTMENTS FOR VISAS ARE CURRENTLY FULL TODAY. NEXT APPOINTMENT SLOTS WILL BE AVAILABLE ON 12/09/2024 AT 10:00 AM FOR APPOINTMENTS IN MEDICAL, ENTRY VISA & STUDENT CATEGORIES FOR SUBMISSION ON 15/09/2024. KINDLY NOTE THAT EXCEPT FOR THESE THREE CATEGORIES SLOTS IN OTHER VISA CATEGORIES ARE NOT OPEN AT THE MOMENT.",
+      "bn": "আমরা বর্তমানে সীমিত আকারে আমাদের ভিসা কার্যক্রম পরিচালনা করছি। আজকের জন্য ভিসা অ্যাপয়েন্টমেন্টগুলি পূর্ণ। পরবর্তী অ্যাপয়েন্টমেন্টের সময়সূচী ১২/০৯/২০২৪ তারিখে সকাল ১০:০০ টায় খোলা হবে, যা মেডিকেল, এন্ট্রি ভিসা এবং শিক্ষার্থী বিভাগগুলির জন্য নির্ধারিত, এবং জমা দেওয়ার তারিখ ১৫/০৯/২০২৪। অনুগ্রহ করে লক্ষ্য করুন যে, এই তিনটি বিভাগের বাইরে অন্যান্য ভিসা বিভাগের জন্য সময়সূচী বর্তমানে খোলা নেই।"
+    },
+    "captchaText": {
+      "en": "Write the above text correctly bellow",
+      "bn": "উপরের লিখাটি সঠিকভাবে নিচে লিখুন"
+    },
+    "failed": {
+      "en": "Failed",
+      "bn": "ব্যর্থ"
+    },
+    "noTransactionFound": {
+      "en": "Oops.. We are unable to find any transaction. Please contact our support center for any help!",
+      "bn": "দুঃখিত.. আমরা কোনো লেনদেন খুঁজে পাচ্ছি না। যেকোনো সাহায্যের জন্য আমাদের সহায়তা কেন্দ্রে যোগাযোগ করুন!"
+    },
+    "startOverPayment": {
+      "en": "Start over payment",
+      "bn": "নতুন করে পেমেন্ট শুরু করুন"
+    },
+    "checking": {
+      "en": "Checking",
+      "bn": "যাচাই করা হচ্ছে"
+    },
+    "back": {
+      "en": "Back",
+      "bn": "ফিরে যান"
+    },
+    "mobileVerified": {
+      "en": "Mobile number is verified",
+      "bn": "মোবাইল নম্বর যাচাই করা হয়েছে"
+    },
+    "noCopyPasteMinChar": {
+      "en": "NO COPY PASTE ALLOWED && INPUT MUST CONTAIN A MINIMUM OF 15 CHARACTERS.",
+      "bn": "কপি পেস্ট অনুমোদিত নয় এবং ইনপুটে সর্বনিম্ন ১৫টি অক্ষর থাকতে হবে।"
+    },
+    "resendOtp": {
+      "en": "Resend OTP",
+      "bn": "ওটিপি পুনরায় পাঠান"
+    },
+    "selectAppointment": {
+      "en": "Select An Appointment",
+      "bn": "একটি অ্যাপয়েন্টমেন্ট নির্বাচন করুন"
+    },
+    "enterCaptcha": {
+      "en": "Enter captcha",
+      "bn": "ক্যাপচা লিখুন"
+    },
+    "verifyOtp": {
+      "en": "Verify OTP",
+      "bn": "ওটিপি যাচাই করুন"
+    },
+    "verifiedStatus": {
+      "en": "Verified",
+      "bn": "যাচাইকৃত"
+    },
+    "mobileNumberVerified": {
+      "en": "Mobile number verified",
+      "bn": "মোবাইল নম্বর যাচাই করা হয়েছে"
+    },
+    "emailSuccessfullyVerified": {
+      "en": "Email successfully verified",
+      "bn": "ইমেইল সফলভাবে যাচাই করা হয়েছে"
+    },
+    "selectAppointmentTime": {
+      "en": "Select An Appointment time",
+      "bn": "অ্যাপয়েন্টমেন্টের সময় নির্বাচন করুন"
+    },
+    "startOverToPayment": {
+      "en": "Start Over to payment",
+      "bn": "নতুন করে পেমেন্ট শুরু করুন"
+    },
+    "congratulations": {
+      "en": "Congratulations",
+      "bn": "অভিনন্দন"
+    },
+    "thankYouPaymentTrxId": {
+      "en": "Thank you for your payment, Your transaction ID is",
+      "bn": "আপনার পেমেন্টের জন্য ধন্যবাদ, আপনার ট্রানজেকশন আইডি হল"
+    },
+    "emailSmsSoon": {
+      "en": "You will get an email and SMS soon!",
+      "bn": "আপনি শীঘ্রই একটি ইমেল এবং এসএমএস পাবেন!"
+    },
+    "totalCharges": {
+      "en": "Total Charges",
+      "bn": "মোট চার্জ"
+    },
+    "totalFees": {
+      "en": "Total Fees",
+      "bn": "মোট ফি"
+    },
+    "makeNewPayment": {
+      "en": "Make a new payment",
+      "bn": "নতুন পেমেন্ট করুন"
+    },
+    "lblInputIvacCenterPlaceholder": {
+      "en": "Select IVAC Center",
+      "bn": "আপনার আবেদনের আইভ্যাক সেন্টার দিন"
+    },
+    "lblInputVisaTypePlaceholder": {
+      "en": "Select VISA type",
+      "bn": "ভিসার ধরন ঠিক করুন"
+    },
+    "lblInputNoOfAppPlaceholder": {
+      "en": "Select if any member going with you",
+      "bn": "পরিবারের সদস্য সংখ্যা নির্বাচন করুন"
+    },
+    "logout_button": {
+      "en": "Logout",
+      "bn": "লগআউট"
+    },
+    "edit": {
+      "en": "Edit",
+      "bn": "এডিট"
+    },
+    "verify_email": {
+      "en": "Verify Email",
+      "bn": "ইমেইল যাচাই করুন"
+    },
+    "verify": {
+      "en": "Verify",
+      "bn": "যাচাই করুন"
+    },
+    "payment_response_text1": {
+      "en": "Thank you for your payment, Your transaction ID is",
+      "bn": "আপনার অর্থ প্রদানের জন্য ধন্যবাদ, আপনার লেনদেন আইডি হল"
+    },
+    "payment_response_text2": {
+      "en": ", you will get an email and SMS soon!",
+      "bn": ", আপনি শীঘ্রই একটি ইমেল এবং এসএমএস পাবেন!"
+    },
+    "application_text": {
+      "en": "Application",
+      "bn": "আবেদন"
+    },
+    "edit_text": {
+      "en": "Edit",
+      "bn": "এডিট"
+    },
+    "processing": {
+      "en": "Processing",
+      "bn": "প্রসেসিং"
+    },
+    "human_verification": {
+      "en": "Verify you are human",
+      "bn": "আপনি মানুষ তা নিশ্চিত করুন"
+    },
+    "otp_message": {
+      "en": "OTP Sent to email address",
+      "bn": "ইমেলে OTP পাঠানো হয়েছে"
+    },
+    "passwordMinLengthMsg": {
+      "en": "Password must be at least 6 characters.",
+      "bn": "পাসওয়ার্ড কমপক্ষে ৬ অক্ষরের হতে হবে"
+    },
+    "slotAvailableText": {
+      "en": "Please wait until slot is available",
+      "bn": "স্লট আশা পর্যন্ত অপেক্ষা করুন"
+    }
+  }
+};if(!E.ok)throw new Error(`Failed to fetch: ${E.status}`);return await E.json()}catch(E){return console.error("Error fetching initial data:",E),null}},v=async()=>{var E,_;try{u(!0);const M={"status":"success","status_code":200,"message":"Slot available","data":{"slot_available":true,"ivac_fees":"1500"},"meta":[]};M.status_code===200?N((E=M==null?void 0:M.data)==null?void 0:E.slot_available,(_=M==null?void 0:M.data)==null?void 0:_.ivac_fees):M.status_code===401?(localStorage.clear(),window.location.href="/"):N(!1)}catch(M){M.status===401?(localStorage.clear(),window.location.href="/"):N(!1)}finally{u(!1)}},w=async()=>{u(!0),d(null);try{const E=await x();E||(localStorage.clear(),window.location.href="/"),s(E),p(E)}catch(E){localStorage.clear(),window.location.href="/",d(E instanceof Error?E.message:"Unknown error")}finally{u(!1)}},N=(E,_=0)=>{l?(s(M=>({...M,slot_available:E,visa_fee:_})),p({...l,slot_available:E,visa_fee:_})):x().then(M=>{M&&(s(U=>({...U,slot_available:E,visa_fee:_})),p({...M,slot_available:E,visa_fee:_}))})};return j.useEffect(()=>{var _;const E=g();E&&((_=Object==null?void 0:Object.keys(E))==null?void 0:_.length)>2?(s(E),u(!1)):w()},[]),j.useEffect(()=>{localStorage.getItem("access_token")&&v()},[localStorage.getItem("access_token")]),f.jsx(J0.Provider,{value:{initialData:l,isLoading:o,error:h,refreshData:w,updateSlotAvailableAndFees:N},children:n})},Bf=()=>{const n=j.useContext(J0);if(n===void 0)throw new Error("useInitialData must be used within an InitialDataProvider");return n},ET=({setStep:n})=>{var I,Q,re,fe,he,me,ie,se,F,T;const{updateSlotAvailableAndFees:l}=Bf(),{language:s,translations:o}=ut(),u=pa(),[h,d]=j.useState(""),[m,p]=j.useState(!1),[g,x]=j.useState(""),v=h.trim()!==""&&h.length>=6,[w,N]=j.useState(null),[E,_]=j.useState(30),[M,U]=j.useState(!0),[P,B]=j.useState(!1),X={hidden:{opacity:0,y:40},visible:{opacity:1,y:0,transition:{duration:.6,ease:"easeOut"}}};j.useEffect(()=>{const D=localStorage.getItem("user_email");D&&x(D)},[]);const O=async()=>{var D,Y,J,S,V,te;try{p(!0);const W=localStorage.getItem("user_phone"),le=localStorage.getItem("user_pwd"),ee=await qe("/api/v2/login-otp",{method:"POST",headers:{Accept:"application/json",language:s},body:{mobile_no:W,password:le,otp:h}});ee.status_code===200?(localStorage.setItem("access_token",(D=ee==null?void 0:ee.data)==null?void 0:D.access_token),l((Y=ee.data)==null?void 0:Y.slot_available),window.dispatchEvent(new Event("tokenUpdate")),localStorage.setItem("auth_name",(J=ee==null?void 0:ee.data)==null?void 0:J.name),localStorage.setItem("auth_email",(S=ee==null?void 0:ee.data)==null?void 0:S.email),localStorage.setItem("auth_phone",(V=ee==null?void 0:ee.data)==null?void 0:V.mobile_no),localStorage.setItem("auth_photo",(te=ee==null?void 0:ee.data)==null?void 0:te.profile_image),localStorage.removeItem("user_pwd"),u("/application")):N({message:ee==null?void 0:ee.message,type:"error"})}catch(W){const le=W,ee=typeof le=="object"&&(le!=null&&le.message)?le.message:"Failed. Please try again later.",ae=typeof le=="object"&&typeof le.status=="number"?le.status:422;(ae===401||ae===419)&&(N({message:ee,type:"error"}),setTimeout(()=>{n(1)},5e3)),N({message:ee,type:"error"})}finally{p(!1)}},q=async()=>{p(!0);try{const D=localStorage.getItem("user_phone"),Y=localStorage.getItem("user_pwd"),J=await qe("/api/v2/login",{method:"POST",headers:{Accept:"application/json",language:s},body:{mobile_no:D,password:Y}});J.status_code===200?(_(30),U(!0),B(!1)):(_(30),U(!0),B(!1),N({message:J==null?void 0:J.message,type:"error"}))}catch(D){const Y=D,J=typeof Y=="object"&&(Y!=null&&Y.message)?Y.message:"Failed. Please try again later.",S=typeof Y=="object"&&typeof Y.status=="number"?Y.status:422;(S===401||S===419)&&(N({message:J,type:"error"}),setTimeout(()=>{n(1)},5e3)),N({message:J,type:"error"})}finally{p(!1)}};return j.useEffect(()=>{let D;return M&&E>0&&(D=setInterval(()=>{_(Y=>Y-1)},1e3)),E===0&&M&&(clearInterval(D),U(!1),B(!0)),()=>clearInterval(D)},[E,M]),f.jsxs(ue.div,{className:"bg-white w-full p-4",variants:X,initial:"hidden",animate:"visible",children:[w&&f.jsx(Ot,{message:w.message,type:w.type,onClose:()=>N(null)}),f.jsxs("p",{className:"text-[10px]",children:[(I=o==null?void 0:o.lblAuthOtp1)==null?void 0:I[s]," (",g,")"]}),f.jsx("p",{className:"text-[10px]",children:(Q=o==null?void 0:o.lblAuthOtp2)==null?void 0:Q[s]}),f.jsxs("p",{className:"text-xs mt-4",children:[(re=o==null?void 0:o.lblInputAuthOtp)==null?void 0:re[s]," ",f.jsxs("span",{className:"text-red-600 text-[10px]",children:[" ","*",(fe=o==null?void 0:o.lblNoCopyPaste)==null?void 0:fe[s]]})]}),f.jsx("input",{type:"text",id:"otp",autoComplete:"off",className:"bg-white border-gray-300 h-8 text-gray-900 font-light text-xs rounded-sm focus:ring-0 focus:border-slate-400 duration-300 border-[1.5px] focus:outline-0 block w-full p-2.5 my-2",placeholder:(he=o==null?void 0:o.lblInputOtp)==null?void 0:he[s],inputMode:"numeric",value:h,maxLength:6,onCopy:D=>D.preventDefault(),onPaste:D=>D.preventDefault(),onCut:D=>D.preventDefault(),onChange:D=>{const Y=D.target.value.replace(/\D/g,"");d(Y)}}),f.jsxs("div",{children:[f.jsx(ue.button,{type:"button",whileTap:{scale:.95},className:"text-white mb-2 mt-2 mr-2 h-8 rounded-lg text-xs w-full sm:w-auto px-2 py-2 text-center transition bg-gray-400 hover:bg-[#218838] focus:ring-[#218838] cursor-pointer",onClick:()=>n(1),children:(me=o==null?void 0:o.back)==null?void 0:me[s]}),f.jsx(ue.button,{type:"button",disabled:m||!v,whileTap:{scale:.95},className:`text-white mb-2 mt-2 h-8 rounded-lg text-xs w-full sm:w-auto px-2 py-2 text-center transition 
+               ${m||!v?"bg-gray-400 cursor-not-allowed":"bg-[#28a745] hover:bg-[#218838] focus:ring-[#218838] cursor-pointer"}`,onClick:v?O:void 0,children:m?((ie=o==null?void 0:o.checking)==null?void 0:ie[s])+"...":(se=o==null?void 0:o.lblProceed)==null?void 0:se[s]}),f.jsx(ue.button,{onClick:q,disabled:!P,className:`text-white mb-2 mt-2 md:ml-2 h-8 rounded-lg text-xs w-full sm:w-auto px-2 py-2 text-center transition ${P?"bg-[#28a745] hover:bg-[#218838] focus:ring-[#218838] cursor-pointer":"bg-gray-400 cursor-not-allowed"}`,children:P?(F=o==null?void 0:o.resendOtp)==null?void 0:F[s]:((T=o==null?void 0:o.resendOtp)==null?void 0:T[s])+` ${E}s`})]})]})},ha=n=>{localStorage.clear(),window.dispatchEvent(new Event("tokenUpdate")),n("/")},CT=({setActiveStep:n})=>{var et,sn,Va,Ta,kt,Ua,ga,za,Ba,Ft,ct,be,Je,ya,La,on,xa,ea,Rt;const[l,s]=j.useState(!1),{initialData:o,error:u,isLoading:h}=Bf(),{language:d,translations:m}=ut(),p=pa(),[g,x]=j.useState(!1),[v,w]=j.useState(null),[N,E]=j.useState([]),[_,M]=j.useState(""),[U,P]=j.useState(""),[B,X]=j.useState(""),[O,q]=j.useState(!1),[I,Q]=j.useState([]),[re,fe]=j.useState([]),[he,me]=j.useState(""),[ie,se]=j.useState(""),[F,T]=j.useState(0),[D,Y]=j.useState([]),[J,S]=j.useState(""),[V,te]=j.useState(""),[W,le]=j.useState(""),[ee,ae]=j.useState(!1),[de,ne]=j.useState(""),[Ve,Oe]=j.useState(!1),Re="0x4AAAAAABvQ3Mi6RktCuZ7P";j.useEffect(()=>{const oe=localStorage.getItem("applicant");if(oe)try{const ye=JSON.parse(oe);M(ye.highcom||null),P(ye.webfile_id||null),X(ye.webfile_id_repeat||null),te(ye.family_count||null),le(ye.visit_purpose||null),S(ye.visa_type||null),me(ye.ivac_name||null),se(ye.ivac_id||null)}catch{console.error("Failed to parse applicant data from localStorage.")}},[]),j.useEffect(()=>{o&&!h&&!u?(T(o.visa_fee||null),Oe(o==null?void 0:o.slot_available),E(o==null?void 0:o.centers),Q(o==null?void 0:o.ivacs),fe(o==null?void 0:o.ivacs),Y(o==null?void 0:o.visa_types)):u&&w({message:u,type:"error"})},[h,u,JSON.stringify(o)]);const De=async()=>{try{ae(!0);const oe=localStorage.getItem("access_token"),ye={"status":"success","status_code":200,"message":"This webfile has no payment.","data":[],"meta":[]};ye.status_code===200?q(!0):(q(!1),w({message:ye==null?void 0:ye.message,type:"error"}))}catch(oe){const ye=oe,Qe=typeof ye=="object"&&(ye!=null&&ye.message)?ye.message:"Failed to get payment data. Please try again later.",$e=typeof ye=="object"&&typeof ye.status=="number"?ye.status:422;($e===401||$e===419)&&(w({message:"Unauthorized, session timed out",type:"error"}),setTimeout(()=>{ha(p)},5e3)),w({message:Qe,type:"error"})}finally{ae(!1)}};j.useEffect(()=>{U.length===12&&B.length===12&&(U===B?De():w({message:"Web File ID does not match",type:"error"}))},[U,B]);const lt=oe=>{const ye=oe.target.value;M(ye);const Qe=I.filter($=>($==null?void 0:$.center_info_id)==ye);fe(Qe),me("");const $e=localStorage.getItem("applicant");if($e){const $=JSON.parse($e);"ivac_id"in $&&delete $.ivac_id,"ivac_name"in $&&delete $.ivac_name,localStorage.setItem("applicant",JSON.stringify($))}},Ne=async oe=>{try{ae(!0);const[ye,Qe]=oe.target.value.split("|");me(ye),se(Qe)}catch(ye){const Qe=ye,$e=typeof Qe=="object"&&(Qe!=null&&Qe.message)?Qe.message:"Failed to get payment data. Please try again later.",$=typeof Qe=="object"&&typeof Qe.status=="number"?Qe.status:422;($===401||$===419)&&(w({message:"Unauthorized, session timed out",type:"error"}),setTimeout(()=>{ha(p)},5e3)),w({message:$e,type:"error"})}finally{ae(!1)}},Ie=_.trim()!==""&&U.trim()!==""&&U.length>=12&&B.trim()!==""&&B.length>=12&&O&&he.trim()!==""&&F!==0&&J.trim()!==""&&V.trim()!==""&&W.trim()!==""&&W.length>=15&&de.trim()!==""&&l,vt=async()=>{try{const oe=localStorage.getItem("access_token");x(!0);const Qe=localStorage.getItem("is_edit")==="true"?"/api/v2/payment/application-info-edit":"/api/v2/payment/application-r5s7h3-submit-hyju6t",$e=await qe(Qe,{method:"POST",headers:{Accept:"application/json",language:d,Authorization:`Bearer ${oe}`},body:{highcom:_,webfile_id:U,webfile_id_repeat:B,ivac_id:ie,visa_type:J,family_count:V,visit_purpose:W,y6e7uk_token_t6d8n3:de}});if($e.status_code===200){n(2);const $={highcom:_,webfile_id:U,webfile_id_repeat:B,ivac_id:ie,ivac_name:he,visa_type:J,family_count:V,visit_purpose:W};localStorage.setItem("applicant",JSON.stringify($))}else w({message:$e==null?void 0:$e.message,type:"error"});x(!1)}catch(oe){x(!1);const ye=oe,Qe=typeof ye=="object"&&(ye!=null&&ye.message)?ye.message:"Failed to get payment data. Please try again later.",$e=typeof ye=="object"&&typeof ye.status=="number"?ye.status:422;($e===401||$e===419)&&(w({message:"Unauthorized, session timed out",type:"error"}),setTimeout(()=>{ha(p)},5e3)),w({message:Qe,type:"error"})}};return j.useEffect(()=>{const oe=setTimeout(()=>{s(!0)},2e4);return()=>clearTimeout(oe)},[]),ee?f.jsx(U0,{}):f.jsxs("div",{className:"grid grid-cols-1 gap-x-6 gap-y-2",children:[v&&f.jsx(Ot,{message:v.message,type:v.type,onClose:()=>w(null)}),Ve?f.jsxs(f.Fragment,{children:[f.jsxs("div",{className:"sm:col-span-3",children:[f.jsx("label",{htmlFor:"high-commission",className:"block text-xs font-light text-black uppercase",children:(sn=m==null?void 0:m.lblSelectHighCommission)==null?void 0:sn[d]}),f.jsx("div",{className:"mt-2",children:f.jsxs("select",{id:"center",name:"center",value:_,onChange:lt,className:"block w-full rounded-md px-3 py-1.5 text-base font-light text-black outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-1 sm:text-sm/6",children:[f.jsx("option",{value:"",disabled:!0,hidden:!0,className:"text-gray-500 font-light",children:(Va=m==null?void 0:m.lblSelectHighCommission)==null?void 0:Va[d]}),N.map(oe=>f.jsx("option",{value:oe.id,className:"text-black font-light",children:oe==null?void 0:oe.c_name},oe.id))]})})]}),f.jsxs("div",{className:"sm:col-span-3",children:[f.jsxs("label",{htmlFor:"first-name",className:"block text-xs font-light text-black uppercase",children:[(Ta=m==null?void 0:m.lblInputWebFile)==null?void 0:Ta[d]," ",f.jsxs("span",{className:"text-red-600 text-[10px]",children:["(",(kt=m==null?void 0:m.lblMustFace7)==null?void 0:kt[d],")"]})]}),f.jsx("div",{className:"mt-2",children:f.jsx("input",{type:"text",name:"webfile_id",id:"webfile_id",onCopy:oe=>oe.preventDefault(),onPaste:oe=>oe.preventDefault(),onCut:oe=>oe.preventDefault(),maxLength:12,autoComplete:"off",value:U,onChange:oe=>{P(oe.target.value),q(!1)},className:"block w-full rounded-md bg-white px-3 py-1.5 text-base text-black outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 sm:text-sm/6"})})]}),f.jsxs("div",{className:"sm:col-span-3",children:[f.jsxs("label",{htmlFor:"first-name",className:"block text-xs font-light text-black uppercase",children:[(Ua=m==null?void 0:m.lblInputWebFileAgain)==null?void 0:Ua[d]," ",f.jsxs("span",{className:"text-red-600 text-[10px]",children:["*(",(ga=m==null?void 0:m.lblNoCopyPaste)==null?void 0:ga[d],")"]})]}),f.jsx("div",{className:"mt-2",children:f.jsx("input",{type:"text",name:"first-name",id:"first-name",onCopy:oe=>oe.preventDefault(),onPaste:oe=>oe.preventDefault(),onCut:oe=>oe.preventDefault(),maxLength:12,autoComplete:"off",value:B,onChange:oe=>{X(oe.target.value),q(!1)},className:"block w-full rounded-md bg-white px-3 py-1.5 text-base text-black outline-1 outline-gray-300 placeholder:text-gray-400 focus:outline-1 focus:-outline-offset-1 sm:text-sm/6"})})]}),f.jsxs("div",{className:"sm:col-span-3",onClick:()=>{O||w({message:"Please enter a valid Web File ID before selecting a center.",type:"error"})},children:[f.jsx("label",{htmlFor:"first-name",className:"block text-xs font-light text-black uppercase",children:(za=m==null?void 0:m.lblInputSelectIvac)==null?void 0:za[d]}),f.jsx("div",{className:"mt-2",children:f.jsxs("select",{id:"center",name:"center",disabled:!O,value:he&&ie?`${he}|${ie}`:"",onChange:Ne,className:"block w-full rounded-md px-3 py-1.5 text-base font-light text-black outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400  sm:text-sm/6",children:[f.jsx("option",{value:"",disabled:!0,hidden:!0,children:(Ba=m==null?void 0:m.lblInputSelectIvac)==null?void 0:Ba[d]}),re.map(oe=>f.jsx("option",{value:`${oe.app_key}|${oe.id}`,children:oe.ivac_name},oe.id))]})})]}),f.jsxs("div",{className:"sm:col-span-3",children:[f.jsxs("label",{htmlFor:"first-name",className:"block text-xs font-light text-black uppercase",children:[(Ft=m==null?void 0:m.lblInputVisaType)==null?void 0:Ft[d]," ",f.jsxs("span",{className:"text-red-600 text-[10px]",children:["*(",(ct=m==null?void 0:m.lblVisaTypeQueue)==null?void 0:ct[d],")"]})]}),f.jsx("div",{className:"mt-2",children:f.jsxs("select",{id:"visa_type",name:"visa_type",disabled:!O,value:J??"",onChange:oe=>S(oe.target.value),className:"block w-full rounded-md px-3 py-1.5 text-base font-light text-black outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 sm:text-sm/6",children:[f.jsx("option",{value:"",disabled:!0,hidden:!0,children:(be=m==null?void 0:m.lblInputVisaTypePlaceholder)==null?void 0:be[d]}),D.map(oe=>f.jsx("option",{value:oe.id,children:oe.type_name},oe.id))]})})]}),f.jsxs("div",{className:"sm:col-span-3",children:[f.jsx("label",{htmlFor:"first-name",className:"block text-xs font-light text-black uppercase",children:(Je=m==null?void 0:m.lblInputNumberOfFamily)==null?void 0:Je[d]}),f.jsx("div",{className:"mt-2",children:f.jsxs("select",{id:"family_count",name:"family_count",disabled:!O,value:V??"",onChange:oe=>te(oe.target.value),className:"block w-full rounded-md px-3 py-1.5 text-base font-light text-black outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 sm:text-sm/6",children:[f.jsx("option",{value:"",disabled:!0,hidden:!0,children:(ya=m==null?void 0:m.lblInputNoOfAppPlaceholder)==null?void 0:ya[d]}),f.jsx("option",{value:"0",children:"0"}),f.jsx("option",{value:"1",children:"1"}),f.jsx("option",{value:"2",children:"2"}),f.jsx("option",{value:"3",children:"3"}),f.jsx("option",{value:"4",children:"4"})]})})]}),f.jsxs("div",{className:"sm:col-span-3",children:[f.jsxs("label",{htmlFor:"first-name",className:"block text-xs font-light text-black uppercase",children:[(La=m==null?void 0:m.lblInputVisitPurpose)==null?void 0:La[d]," ",f.jsxs("span",{className:"text-red-600 uppercase text-[10px]",children:["*(",(on=m==null?void 0:m.noCopyPasteMinChar)==null?void 0:on[d],")"]})]}),f.jsx("div",{className:"mt-2",children:f.jsx("textarea",{name:"visit_purpose",id:"visit_purpose",onCopy:oe=>oe.preventDefault(),onPaste:oe=>oe.preventDefault(),onCut:oe=>oe.preventDefault(),autoComplete:"off",disabled:!O,value:W,onChange:oe=>le(oe.target.value),className:"block w-full rounded-md bg-white px-3 py-1.5 text-base text-black outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 sm:text-sm/6"})})]}),f.jsxs("div",{className:"sm:col-span-3",children:[f.jsx("label",{htmlFor:"first-name",className:"block text-xs font-light text-black uppercase",children:(xa=m==null?void 0:m.lblInputAmount)==null?void 0:xa[d]}),f.jsxs("label",{htmlFor:"first-name",className:"block text-sm font-bold text-black uppercase",children:["BDT ",F!==0?F:""]})]}),f.jsx("div",{className:"sm:col-span-3",children:f.jsx(nr,{sitekey:Re,onVerify:oe=>ne(oe)})}),f.jsx("div",{className:"sm:col-span-3",children:g?f.jsxs(ue.button,{type:"button",whileTap:{scale:.95},className:`text-white mb-2 mt-2 h-8 rounded-lg text-xs w-full sm:w-auto px-2 py-2 text-center transition duration-300
               bg-gray-400 cursor-not-allowed
             `,children:[(ea=m==null?void 0:m.checking)==null?void 0:ea[d],"..."]}):f.jsx(ue.button,{type:"button",disabled:!Ie,whileTap:{scale:.95},className:`text-white mb-2 mt-2 h-8 rounded-lg text-xs w-full sm:w-auto px-2 py-2 text-center transition duration-300
               ${Ie?"bg-[#28a745] hover:bg-[#218838] cursor-pointer":"bg-gray-400 cursor-not-allowed"}
